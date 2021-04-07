@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Camppus</string>
+    <string name="welcome_name">WELCOME!</string>
+    <string name="don_t_have_acount">Don´t have acount?</string>
+    <string name="sing_in">Sing In</string>
+    <string name="btn_login">Login</string>
+    <string name="remember_me">Remember Me.</string>
 </resources>
