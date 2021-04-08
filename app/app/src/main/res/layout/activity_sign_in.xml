@@ -31,7 +31,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_logo"
-        tools:layout_editor_absoluteY="39dp" />
+        tools:layout_editor_absoluteY="39dp"
+        tools:ignore="MissingConstraints" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Form_SignIN"
@@ -124,7 +125,7 @@
 
         <Button
             android:id="@+id/btn_registrar"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/style_btn1"

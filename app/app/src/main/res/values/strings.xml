@@ -6,4 +6,11 @@
     <string name="btn_login">Log In</string>
     <string name="remember_me">Remember Me</string>
     <string name="signin">Sign In</string>
+    <string name="title_activity_main_navigation">MainActivity</string>
+
+
+    <string name="title_chat">Chat</string>
+    <string name="title_calls">Calls</string>
+    <string name="title_groups">Groups</string>
+    <string name="title_assigments">Assigments</string>
 </resources>

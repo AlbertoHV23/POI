@@ -13,14 +13,22 @@ class LoginActivity : AppCompatActivity() {
 
 
         var btn_activitySignIn = findViewById<Button>(R.id.btn_activitySignIn)
+        var btn_logear :Button = findViewById(R.id.btn_logear)
 
         btn_activitySignIn.setOnClickListener(){
             goToActivitySingIN()
+        }
+        btn_logear.setOnClickListener(){
+            goToMainNavigationActivity()
         }
     }
 
     fun goToActivitySingIN(){
         startActivity(Intent(this,SignInActivity::class.java))
+    }
+
+    fun goToMainNavigationActivity(){
+        startActivity(Intent(this,MainNavigationActivity::class.java))
     }
 
 }

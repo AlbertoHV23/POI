@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_chat">
+
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:name="com.poi.camppus.ui.chat.ChatFragment"
+        android:label="@string/title_chat"
+        tools:layout="@layout/fragment_chat" />
+
+    <fragment
+        android:id="@+id/navigation_calls"
+        android:name="com.poi.camppus.ui.calls.CallsFragment"
+        android:label="@string/title_calls"
+        tools:layout="@layout/fragment_calls" />
+
+    <fragment
+        android:id="@+id/navigation_groups"
+        android:name="com.poi.camppus.ui.groups.GroupsFragment"
+        android:label="@string/title_groups"
+        tools:layout="@layout/fragment_groups" />
+
+    <fragment
+        android:id="@+id/navigation_assigments"
+        android:name="com.poi.camppus.ui.groups.GroupsFragment"
+        android:label="@string/title_assigments"
+        tools:layout="@layout/fragment_chat" />
+
+</navigation>
