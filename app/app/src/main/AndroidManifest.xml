@@ -13,7 +13,10 @@
             android:name=".MainNavigationActivity"
             android:label="@string/title_activity_main_navigation"></activity>
         <activity android:name=".SignInActivity" />
-        <activity android:name=".LoginActivity">
+
+        <activity android:name=".LoginActivity"
+            android:theme="@style/SplashTheme">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

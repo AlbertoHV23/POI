@@ -8,6 +8,9 @@ import android.widget.TextView
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        Thread.sleep(1000)
+        setTheme(R.style.Theme_Camppus_login)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
