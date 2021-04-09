@@ -32,12 +32,14 @@ class MainNavigationActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        val bundle  = intent.extras
+        /*val bundle  = intent.extras
         var email = bundle?.getString("email")
 
         val prefs = getSharedPreferences("UserPreferences", MODE_PRIVATE).edit()
         prefs.putString("email",email)
         prefs.apply()
+        */
+
 
     }
 }
