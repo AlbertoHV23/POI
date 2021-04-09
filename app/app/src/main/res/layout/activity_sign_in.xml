@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Titulo"
+    android:background="@drawable/style_btn1"
     tools:context=".SignInActivity">
 
     <ImageView
@@ -31,8 +31,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_logo"
-        tools:layout_editor_absoluteY="39dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="39dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Form_SignIN"
@@ -125,10 +125,12 @@
 
         <Button
             android:id="@+id/btn_registrar"
+            style="@android:style/Widget.Material.Light.Button.Small"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/style_btn1"
+            android:backgroundTint="@color/color2"
             android:text="@string/signin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

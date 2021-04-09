@@ -38,7 +38,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/formLogin"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="450dp"
         android:layout_margin="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="200dp"
@@ -103,13 +103,14 @@
             style="@style/Widget.AppCompat.Button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/style_btn1"
             android:text="@string/btn_login"
             app:iconTint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="@+id/txt_loginPassword"
             app:layout_constraintStart_toStartOf="@+id/txt_loginPassword"
             app:layout_constraintTop_toBottomOf="@+id/checkBox_remember" />
+
 
         <CheckBox
             android:id="@+id/checkBox_remember"
@@ -143,6 +144,22 @@
             app:layout_constraintBottom_toBottomOf="@+id/textView3"
             app:layout_constraintStart_toEndOf="@+id/textView3"
             app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+        <Button
+            android:id="@+id/btn_login_google"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#000000"
+            android:drawableStart="@drawable/google16"
+
+            android:drawableLeft="@drawable/google16"
+            android:text="@string/login_with_google"
+            app:icon="@drawable/google16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_logear" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

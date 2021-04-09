@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "768297166955",
+    "project_id": "camppus-224af",
+    "storage_bucket": "camppus-224af.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768297166955:android:7e0d136b792b23bd5c292e",
+        "android_client_info": {
+          "package_name": "com.poi.camppus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "768297166955-gm9po7boovm61png0g4sihq54i390pqg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.poi.camppus",
+            "certificate_hash": "70dbaf7e61bb30573e27b369014d334f48fa9cf7"
+          }
+        },
+        {
+          "client_id": "768297166955-kl9ms5f7e38abtmlaspduhqitu8uqefd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAo0koC53J5XjOtt06kz2QprwCRoQ0PCkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "768297166955-kl9ms5f7e38abtmlaspduhqitu8uqefd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
