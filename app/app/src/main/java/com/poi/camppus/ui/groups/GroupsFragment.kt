@@ -12,20 +12,5 @@ import com.poi.camppus.R
 
 class GroupsFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: GroupsViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        notificationsViewModel =
-            ViewModelProvider(this).get(GroupsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_groups, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
-    }
 }

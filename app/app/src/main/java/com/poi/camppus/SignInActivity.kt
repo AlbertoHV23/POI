@@ -23,6 +23,8 @@ class SignInActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private val db = FirebaseDatabase.getInstance() //INTANCIA DE LA BASE DE DATOS
+
+  //TABLAS
     private val chatRef = db.getReference("Users") //PARA METER IMFORMACION
 
 

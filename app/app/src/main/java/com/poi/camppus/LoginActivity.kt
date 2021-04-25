@@ -1,29 +1,25 @@
 package com.poi.camppus
 
-import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.database.ValueEventListener
 import com.poi.camppus.models.tbl_Usuarios
-import kotlin.math.sign
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -36,6 +32,16 @@ class LoginActivity : AppCompatActivity() {
 
     lateinit var txt_email: EditText
     lateinit var txt_password : EditText
+
+
+    private val db = FirebaseDatabase.getInstance() //INTANCIA DE LA BASE DE DATOS
+
+    //TABLAS
+    private val fb_user = db.getReference("Users") //PARA METER IMFORMACION
+
+    //LISTAS
+    private val ListaUsuarios = mutableListOf<tbl_Usuarios>()
+
 
     //
 
@@ -87,7 +93,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun goToActivitySingIN(){
-        startActivity(Intent(this,SignInActivity::class.java))
+        startActivity(Intent(this, SignInActivity::class.java))
     }
 
 
@@ -97,39 +103,42 @@ class LoginActivity : AppCompatActivity() {
         pasword = txt_password.text.toString()
 
         if (email.isNotEmpty() && pasword.isNotEmpty()) Login()
-        else ShowAlert("Empty Fields","Fill in all the fields to be able to register")
+        else ShowAlert("Empty Fields", "Fill in all the fields to be able to register")
     }
 
     fun Login(){
         auth.signInWithEmailAndPassword(email, pasword)
                 .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) showHome()
-                    else ShowAlert("Error","Usuario o contraseña incorrecta")
+                    if (task.isSuccessful) {
+                       Currentuser()
+                        showHome()
+                    }
+                    else ShowAlert("Error", "Usuario o contraseña incorrecta")
                 }
 
     }
 
     fun showHome(){
-        val intent:Intent = Intent(this,MainNavigationActivity::class.java)
-        //intent.putExtra("email",email)
+        val intent:Intent = Intent(this, MainNavigationActivity::class.java)
+        intent.putExtra("email", email)
         startActivity(intent)
 
     }
 
-    fun ShowAlert(title:String,msg:String,) {
+    fun ShowAlert(title: String, msg: String) {
 
         val simpleDialog =  AlertDialog.Builder(this)
                 .setTitle(title)
-                .setMessage(msg )
+                .setMessage(msg)
                 .setIcon(R.drawable.ic_baseline_error_24)
-                .setPositiveButton("Retry"){ _,_ ->
+                .setPositiveButton("Retry"){ _, _ ->
 
-                    Toast.makeText(this,"Try again", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Try again", Toast.LENGTH_LONG).show()
 
                 }
-                .setNegativeButton("Cancel"){_,_->
+                .setNegativeButton("Cancel"){ _, _->
 
-                    Toast.makeText(this,"Cancel add user", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Cancel add user", Toast.LENGTH_LONG).show()
                 }.create()
 
         simpleDialog.show()
@@ -137,7 +146,7 @@ class LoginActivity : AppCompatActivity() {
 
     fun sesion(){
         val prefs = getSharedPreferences("UserPreferences", MODE_PRIVATE)
-        val email = prefs.getString("email","")
+        val email = prefs.getString("email", "")
         if (email!!.isNotEmpty()){
             showHome()
         }
@@ -188,6 +197,15 @@ class LoginActivity : AppCompatActivity() {
                         Log.w("Signin", "signInWithCredential:failure", task.exception)
                     }
                 }
+    }
+
+    private fun Currentuser(){
+        var c_user = auth.currentUser
+        if (c_user !=null){
+            var ema = c_user.email
+            println(ema)
+
+        }
     }
 
 

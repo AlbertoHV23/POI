@@ -1,6 +1,8 @@
 package com.poi.camppus
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -8,10 +10,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 
-enum class Auntenticacion{
-    BASIC,
-    GOOGLE
-}
 
 
 class MainNavigationActivity : AppCompatActivity() {
@@ -32,13 +30,9 @@ class MainNavigationActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        /*val bundle  = intent.extras
-        var email = bundle?.getString("email")
 
-        val prefs = getSharedPreferences("UserPreferences", MODE_PRIVATE).edit()
-        prefs.putString("email",email)
-        prefs.apply()
-        */
+
+
 
 
     }
