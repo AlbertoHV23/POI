@@ -1,4 +1,4 @@
-package com.poi.camppus
+package com.poi.camppus.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,8 +10,11 @@ import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.poi.camppus.R
 import com.poi.camppus.models.tbl_Usuarios
+import java.util.*
 
 
 class SignInActivity : AppCompatActivity() {
@@ -23,6 +26,7 @@ class SignInActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private val db = FirebaseDatabase.getInstance() //INTANCIA DE LA BASE DE DATOS
+    val firebase  = FirebaseFirestore.getInstance();
 
   //TABLAS
     private val chatRef = db.getReference("Users") //PARA METER IMFORMACION
@@ -83,7 +87,7 @@ class SignInActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
 
-                    val usuario = tbl_Usuarios(names = names,surname = surnames,emails =email ,password = pasword,"img")
+                    val usuario = tbl_Usuarios(id = "",names = names,surname = surnames,emails =email ,password = pasword,"img")
                     InsertUduario(usuario)
                     Toast.makeText(baseContext, "User added.", Toast.LENGTH_SHORT).show()
                     showHome(usuario)
@@ -119,13 +123,18 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun InsertUduario(user: tbl_Usuarios) {
-        val MensajeFirebase = chatRef.push()
-        user.emails = MensajeFirebase.key ?: ""
-        MensajeFirebase.setValue(user)
+       //val MensajeFirebase = chatRef.push()
+       //user.emails = MensajeFirebase.key ?: ""
+        //MensajeFirebase.setValue(user)
+        user.id = UUID.randomUUID().toString()
+        //firebase.collection("USERS").document(user.id).set(user)
+        firebase.collection("USERS").add(user)
     }
 
+
+
     fun showHome(usuario: tbl_Usuarios){
-        val intent:Intent = Intent(this,MainNavigationActivity::class.java)
+        val intent:Intent = Intent(this, MainNavigationActivity::class.java)
         intent.putExtra("email",email)
         startActivity(intent)
 

@@ -9,24 +9,26 @@
         android:roundIcon="@drawable/logo150"
         android:supportsRtl="true"
         android:theme="@style/Theme.Camppus">
-        <activity android:name=".SendmessagesActivity">
+        <activity android:name=".test">
+
+        </activity>
+        <activity android:name=".activities.SendmessagesActivity" />
+        <activity
+            android:name=".activities.MainNavigationActivity"
+            android:label="@string/title_activity_main_navigation">
+
+
+
+        </activity>
+        <activity android:name=".activities.SignInActivity" />
+        <activity
+            android:name=".activities.LoginActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".MainNavigationActivity"
-            android:label="@string/title_activity_main_navigation">
-
-
-        </activity>
-        <activity android:name=".SignInActivity" />
-        <activity
-            android:name=".LoginActivity"
-            android:theme="@style/SplashTheme">
-
         </activity>
     </application>
 

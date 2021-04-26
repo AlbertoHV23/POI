@@ -1,15 +1,13 @@
-package com.poi.camppus
+package com.poi.camppus.activities
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-
+import com.poi.camppus.R
 
 
 class MainNavigationActivity : AppCompatActivity() {
@@ -24,11 +22,13 @@ class MainNavigationActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_chat, R.id.navigation_calls, R.id.navigation_groups,R.id.navigation_assigments
+                    R.id.navigation_chat, R.id.navigation_calls, R.id.navigation_groups, R.id.navigation_assigments,R.id.navigation_profile
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
 
 
 

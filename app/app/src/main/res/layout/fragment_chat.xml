@@ -4,40 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.chat.ChatFragment"
-
+    tools:context=".ui.chat.ChatsFragment"
     >
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_listchats"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_listchats" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/bnt_floating"
+        android:id="@+id/fb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="60dp"
         android:clickable="true"
         android:src="@drawable/ic_baseline_add_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/rv_lista_chats"
+        app:layout_constraintEnd_toEndOf="@+id/rv_lista_chats" />
 
-    <TextView
-        android:id="@+id/eliminar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_lista_chats"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/rv_listchats"
-        app:layout_constraintStart_toStartOf="@+id/rv_listchats"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_lista_chats" />
 
-    <Button
-        android:id="@+id/puto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

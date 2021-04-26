@@ -1,68 +1,67 @@
 package com.poi.camppus.ui.chat
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.poi.camppus.MainNavigationActivity
+import com.alonsodelcid.multichat.models.tbl_Chat
+import com.google.android.material.snackbar.Snackbar
+import com.poi.camppus.Adapter
 import com.poi.camppus.R
-import com.poi.camppus.SendmessagesActivity
-import org.w3c.dom.Text
+import com.poi.camppus.activities.SendmessagesActivity
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ChatsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ChatsFragment : Fragment() {
-    lateinit var btn:Button //Boton para empezar chat
-    lateinit var rv :RecyclerView //Recycler view del historia de mensajes
+    var chats :List<tbl_Chat> = listOf(
+            tbl_Chat("1","alberto", listOf("sd")),
+            tbl_Chat("1","daniel", listOf("sd")),
+            tbl_Chat("1","becerra", listOf("sd")),
+            tbl_Chat("1","donato", listOf("sd"))
+    )
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private var context2:Context? = null
+    private var adapter:Adapter? = null
 
-    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View {
+
         // Inflate the layout for this fragment
-        val root =  inflater.inflate(R.layout.fragment_chat, container, false)
-        val puto:Button = root.findViewById(R.id.puto)
+        var root =  inflater.inflate(R.layout.fragment_chat, container, false)
 
-        rv.layoutManager = LinearLayoutManager(getActivity())
-        rv.adapter
+        val rvChat:RecyclerView =root.findViewById<RecyclerView>(R.id.rv_lista_chats)
+        rvChat.layoutManager = LinearLayoutManager(this.context2!!)
+        this.adapter = Adapter(this.context2!!, chats)
+        rvChat.adapter = this.adapter
 
-
-
-        puto.setOnClickListener(){
+        val fab: View = root.findViewById(R.id.fb)
+        fab.setOnClickListener { view ->
             val intent = Intent (getActivity(), SendmessagesActivity::class.java)
-            getActivity()?.startActivity(intent)
-          println("becerra es puto")
+            startActivity(intent)
         }
+
+
+
 
         return root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        this.context2 = context
     }
 
 
 
-    }
+
+}

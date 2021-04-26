@@ -1,4 +1,4 @@
-package com.poi.camppus
+package com.poi.camppus.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,14 +14,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.poi.camppus.R
 import com.poi.camppus.models.tbl_Usuarios
 
 
-class LoginActivity : AppCompatActivity() {
+class   LoginActivity : AppCompatActivity() {
 
     companion object{
         private const val RC_SIGN_IN = 120
@@ -35,24 +33,18 @@ class LoginActivity : AppCompatActivity() {
 
 
     private val db = FirebaseDatabase.getInstance() //INTANCIA DE LA BASE DE DATOS
-
     //TABLAS
     private val fb_user = db.getReference("Users") //PARA METER IMFORMACION
 
     //LISTAS
     private val ListaUsuarios = mutableListOf<tbl_Usuarios>()
 
-
-    //
-
     lateinit var email:String
     lateinit var pasword:String
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Thread.sleep(1500)
         setTheme(R.style.Theme_Camppus_login)
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
@@ -64,8 +56,6 @@ class LoginActivity : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         auth = FirebaseAuth.getInstance()
-
-
 
         var btn_activitySignIn = findViewById<Button>(R.id.btn_activitySignIn)
         var btn_logear :Button = findViewById(R.id.btn_logear)
@@ -87,6 +77,8 @@ class LoginActivity : AppCompatActivity() {
             signIn()
         }
 
+
+        //CheckUser()
 
 
 
@@ -110,7 +102,6 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, pasword)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                       Currentuser()
                         showHome()
                     }
                     else ShowAlert("Error", "Usuario o contraseña incorrecta")
@@ -120,8 +111,9 @@ class LoginActivity : AppCompatActivity() {
 
     fun showHome(){
         val intent:Intent = Intent(this, MainNavigationActivity::class.java)
-        intent.putExtra("email", email)
+        intent.putExtra("EMAIL", auth.currentUser.email)
         startActivity(intent)
+        finish()
 
     }
 
@@ -142,14 +134,6 @@ class LoginActivity : AppCompatActivity() {
                 }.create()
 
         simpleDialog.show()
-    }
-
-    fun sesion(){
-        val prefs = getSharedPreferences("UserPreferences", MODE_PRIVATE)
-        val email = prefs.getString("email", "")
-        if (email!!.isNotEmpty()){
-            showHome()
-        }
     }
 
     //GOOGLE
@@ -199,11 +183,11 @@ class LoginActivity : AppCompatActivity() {
                 }
     }
 
-    private fun Currentuser(){
-        var c_user = auth.currentUser
-        if (c_user !=null){
-            var ema = c_user.email
-            println(ema)
+
+    private fun CheckUser(){
+        val currentUser = auth.currentUser
+        if (currentUser !=null){
+            showHome()
 
         }
     }

@@ -29,4 +29,10 @@
         android:label="@string/title_assigments"
         tools:layout="@layout/fragment_assigments" />
 
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.poi.camppus.ui.profile.Porfileragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+
 </navigation>

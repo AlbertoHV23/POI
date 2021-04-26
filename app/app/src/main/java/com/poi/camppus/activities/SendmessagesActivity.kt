@@ -1,4 +1,4 @@
-package com.poi.camppus
+package com.poi.camppus.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
+import com.poi.camppus.R
 import com.poi.camppus.models.tbl_Mensajes
 
 class SendmessagesActivity : AppCompatActivity() {
