@@ -13,6 +13,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.poi.camppus.R
+import com.poi.camppus.models.ReferenciasFirebase
 import com.poi.camppus.models.tbl_Usuarios
 import java.util.*
 
@@ -60,6 +61,8 @@ class SignInActivity : AppCompatActivity() {
         }
 
 
+
+
     }
 
     fun validarRegistro(){
@@ -88,7 +91,7 @@ class SignInActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
 
                     val usuario = tbl_Usuarios(id = "",names = names,surname = surnames,emails =email ,password = pasword,"img")
-                    InsertUduario(usuario)
+                    //InsertUduario(usuario)
                     Toast.makeText(baseContext, "User added.", Toast.LENGTH_SHORT).show()
                     showHome(usuario)
 
@@ -123,12 +126,10 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun InsertUduario(user: tbl_Usuarios) {
-       //val MensajeFirebase = chatRef.push()
-       //user.emails = MensajeFirebase.key ?: ""
-        //MensajeFirebase.setValue(user)
+
         user.id = UUID.randomUUID().toString()
-        //firebase.collection("USERS").document(user.id).set(user)
-        firebase.collection("USERS").add(user)
+        firebase.collection(ReferenciasFirebase.USERS.toString()).document(user.id).set(user)
+        //firebase.collection("USERS").add(user)
     }
 
 

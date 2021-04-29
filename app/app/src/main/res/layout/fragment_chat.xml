@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.chat.ChatsFragment"
-    >
+    tools:context=".ui.chat.ChatsFragment">
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -22,12 +21,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_lista_chats"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="6dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UnknownId"
         tools:listitem="@layout/item_lista_chats" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,24 +1,39 @@
-package com.poi.camppus
+package com.poi.camppus.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.alonsodelcid.multichat.models.tbl_Chat
+import com.poi.camppus.MensajesActivity
+import com.poi.camppus.R
+import com.poi.camppus.models.tbl_Mensajes
 
-class Adapter (val context: Context, var LISTA:List<tbl_Chat>): RecyclerView.Adapter<Adapter.Holder>(){
+class MensajesAdapter(val context: Context, var LISTA:List<tbl_Mensajes>): RecyclerView.Adapter<MensajesAdapter.Holder>(){
     class Holder(val view: View):RecyclerView.ViewHolder(view) {
-        fun render(superHero: tbl_Chat) {
-            var txt: TextView = view?.findViewById(R.id.id_texto)
-            txt.text= superHero.name
+        fun render(mensajes: tbl_Mensajes) {
+
+            var txt: TextView = view?.findViewById(R.id.mensaje_usuario)
+            txt.text= mensajes.de
+
         }
+
+
+
+
+
+
     }
+
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return Holder(layoutInflater.inflate(R.layout.item_lista_chats,parent,false))
+        return MensajesAdapter.Holder(layoutInflater.inflate(R.layout.item_lista_mensajes, parent, false))
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
@@ -28,6 +43,4 @@ class Adapter (val context: Context, var LISTA:List<tbl_Chat>): RecyclerView.Ada
     override fun getItemCount(): Int {
         return LISTA.size
     }
-
-
 }

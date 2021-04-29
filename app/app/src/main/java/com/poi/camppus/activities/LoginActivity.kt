@@ -32,6 +32,8 @@ class   LoginActivity : AppCompatActivity() {
     lateinit var txt_password : EditText
 
 
+
+
     private val db = FirebaseDatabase.getInstance() //INTANCIA DE LA BASE DE DATOS
     //TABLAS
     private val fb_user = db.getReference("Users") //PARA METER IMFORMACION
