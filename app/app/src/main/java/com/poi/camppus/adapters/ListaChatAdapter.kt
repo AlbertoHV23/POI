@@ -34,9 +34,12 @@ class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): Recycle
 
                 var txt: TextView = view?.findViewById(R.id.id_texto)
                 var men: TextView = view?.findViewById(R.id.txt_mensajeItem)
-                val otherUser = superHero.users[1]
+                var otherUser = ""
                 txt.text= superHero.name
-                men.text = "Chat con $otherUser"
+                for (item:String in superHero.users){
+                    otherUser = "$otherUser , $item"
+                }
+                men.text = otherUser
 
                 email =superHero.users[1]
                 id = superHero.id

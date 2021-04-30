@@ -20,20 +20,26 @@ class SendmessagesActivity : AppCompatActivity() {
     private val db = FirebaseDatabase.getInstance() //INTANCIA DE LA BASE DE DATOS
     val firebase  = FirebaseFirestore.getInstance()
     private  lateinit  var destinatario:EditText
-    private  lateinit var mensajes: tbl_Mensajes
+    var grupo:MutableList<String> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sendmessages)
         auth = FirebaseAuth.getInstance()
         destinatario = findViewById(R.id.txt_sendDestinatario)
+
         var btn_enviar: Button = findViewById(R.id.btn_sendmensaje)
+        var btn_add: Button = findViewById(R.id.Agregar_grupo)
 
         btn_enviar.setOnClickListener(){
-
            enviarMensaje()
             finish()
         }
+        btn_add.setOnClickListener(){
+            grupo.add(destinatario.text.toString())
+            println(grupo)
+        }
+
 
 
 
@@ -44,15 +50,22 @@ class SendmessagesActivity : AppCompatActivity() {
         var chatId= UUID.randomUUID()
         val otherUser = destinatario.text.toString()
         val users = listOf(auth.currentUser.email, otherUser)
+
+        grupo.add(auth.currentUser.email)
         val chat = tbl_Chat(
                 id = chatId.toString(),
                 name = "$otherUser",
-                users = users
+                users = grupo
         )
 
+
+
         firebase.collection(ReferenciasFirebase.CHATS.toString()).document(chatId.toString()).set(chat)
-        firebase.collection(ReferenciasFirebase.USERS.toString()).document(auth.currentUser.email).collection(ReferenciasFirebase.CHATS.toString()).document(chatId.toString()).set(chat)
-        firebase.collection(ReferenciasFirebase.USERS.toString()).document(otherUser).collection(ReferenciasFirebase.CHATS.toString()).document(chatId.toString()).set(chat)
+        if (grupo !=null){
+            for (item:String in grupo){
+                firebase.collection(ReferenciasFirebase.USERS.toString()).document(item).collection(ReferenciasFirebase.CHATS.toString()).document(chatId.toString()).set(chat)
+            }
+        }
 
     }
 
