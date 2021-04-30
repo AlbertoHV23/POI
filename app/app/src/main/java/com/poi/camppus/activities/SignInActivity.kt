@@ -124,6 +124,7 @@ class SignInActivity : AppCompatActivity() {
         val intent:Intent = Intent(this, MainNavigationActivity::class.java)
         intent.putExtra("email",email)
         startActivity(intent)
+        finish()
     }
 
 }

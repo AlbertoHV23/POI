@@ -34,14 +34,12 @@ class MensajesAdapter(val context: Context, var LISTA:List<tbl_Mensajes>): Recyc
             if(mensajes.from.equals(auth.currentUser.email)){
                 myMessageLayout.visibility = View.VISIBLE
                 otherMessage.visibility = View.GONE
-
                 mio.text = mensajes.message
 
             }
             else{
                 otherMessage.visibility = View.VISIBLE
                 myMessageLayout.visibility = View.GONE
-
                 other.text = mensajes.message
             }
 

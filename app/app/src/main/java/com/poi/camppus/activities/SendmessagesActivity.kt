@@ -38,15 +38,7 @@ class SendmessagesActivity : AppCompatActivity() {
 
 
     }
-    private fun  obtenerListaChats(){
-        val userRef = firebase.collection(ReferenciasFirebase.CHATS.toString()).document(auth.currentUser.email)
-        userRef.collection(ReferenciasFirebase.MESSAGES.toString()).get()
-                .addOnSuccessListener { document ->
-                    var listChats = document.toObjects(tbl_Mensajes::class.java)
 
-                }
-
-    }
 
     private fun enviarMensaje() {
         var chatId= UUID.randomUUID()
@@ -54,7 +46,7 @@ class SendmessagesActivity : AppCompatActivity() {
         val users = listOf(auth.currentUser.email, otherUser)
         val chat = tbl_Chat(
                 id = chatId.toString(),
-                name = "Chat con $otherUser",
+                name = "$otherUser",
                 users = users
         )
 

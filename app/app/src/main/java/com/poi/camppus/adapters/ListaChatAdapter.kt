@@ -30,13 +30,19 @@ class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): Recycle
         lateinit var  email:String
         lateinit var id:String
         fun render(superHero: tbl_Chat) {
-            var txt: TextView = view?.findViewById(R.id.id_texto)
-            var men: TextView = view?.findViewById(R.id.txt_mensajeItem)
-            txt.text= superHero.name
-            men.text = superHero.users[0]+", "+superHero.users[1]
+            if (superHero != null){
 
-            email =superHero.users[1]
-            id = superHero.id
+                var txt: TextView = view?.findViewById(R.id.id_texto)
+                var men: TextView = view?.findViewById(R.id.txt_mensajeItem)
+                val otherUser = superHero.users[1]
+                txt.text= superHero.name
+                men.text = "Chat con $otherUser"
+
+                email =superHero.users[1]
+                id = superHero.id
+
+            }
+
 
 
         }

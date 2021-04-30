@@ -27,7 +27,7 @@ import java.util.*
 class ChatsFragment : Fragment() {
      lateinit var auth: FirebaseAuth
      lateinit var MisMensajes: List<tbl_Chat>
-    val firebase  = FirebaseFirestore.getInstance()
+     val firebase  = FirebaseFirestore.getInstance()
 
 
     private var context2:Context? = null
@@ -78,25 +78,6 @@ class ChatsFragment : Fragment() {
         super.onAttach(context)
         this.context2 = context
     }
-
-
-    private fun enviarMensaje() {
-        val chatId = UUID.randomUUID().toString()
-        val otherUser = destinatario.text.toString()
-        val users = listOf(auth.currentUser.email, otherUser)
-        val chat = tbl_Chat(
-            id = chatId,
-            name = "Chat con $otherUser",
-            users = users
-        )
-
-        firebase.collection(ReferenciasFirebase.CHATS.toString()).document(chatId).set(chat)
-        firebase.collection(ReferenciasFirebase.USERS.toString()).document(auth.currentUser.email).collection(ReferenciasFirebase.CHATS.toString()).document(chatId).set(chat)
-        firebase.collection(ReferenciasFirebase.USERS.toString()).document(otherUser).collection(ReferenciasFirebase.CHATS.toString()).document(chatId).set(chat)
-
-    }
-
-
 
 
 
