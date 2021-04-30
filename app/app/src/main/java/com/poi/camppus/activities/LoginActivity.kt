@@ -20,26 +20,15 @@ import com.poi.camppus.models.tbl_Usuarios
 
 
 class   LoginActivity : AppCompatActivity() {
-
     companion object{
         private const val RC_SIGN_IN = 120
     }
 
     private lateinit var auth:FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
-
     lateinit var txt_email: EditText
     lateinit var txt_password : EditText
-
-
-
-
-    private val db = FirebaseDatabase.getInstance() //INTANCIA DE LA BASE DE DATOS
-    //TABLAS
-    private val fb_user = db.getReference("Users") //PARA METER IMFORMACION
-
-    //LISTAS
-    private val ListaUsuarios = mutableListOf<tbl_Usuarios>()
+    private val db = FirebaseDatabase.getInstance()
 
     lateinit var email:String
     lateinit var pasword:String
@@ -79,11 +68,6 @@ class   LoginActivity : AppCompatActivity() {
             signIn()
         }
 
-
-        //CheckUser()
-
-
-
     }
 
     fun goToActivitySingIN(){
@@ -120,18 +104,14 @@ class   LoginActivity : AppCompatActivity() {
     }
 
     fun ShowAlert(title: String, msg: String) {
-
         val simpleDialog =  AlertDialog.Builder(this)
                 .setTitle(title)
                 .setMessage(msg)
                 .setIcon(R.drawable.ic_baseline_error_24)
                 .setPositiveButton("Retry"){ _, _ ->
-
                     Toast.makeText(this, "Try again", Toast.LENGTH_LONG).show()
-
                 }
                 .setNegativeButton("Cancel"){ _, _->
-
                     Toast.makeText(this, "Cancel add user", Toast.LENGTH_LONG).show()
                 }.create()
 
@@ -147,7 +127,6 @@ class   LoginActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             val exception = task.exception
@@ -155,16 +134,12 @@ class   LoginActivity : AppCompatActivity() {
                 try {
                     // Google Sign In was successful, authenticate with Firebase
                     val account = task.getResult(ApiException::class.java)!!
-                    Log.d("SigninActivyt", "firebaseAuthWithGoogle:" + account.id)
                     firebaseAuthWithGoogle(account.idToken!!)
                 } catch (e: ApiException) {
                     // Google Sign In failed, update UI appropriately
-                    Log.w("SigninActivyt", "Google sign in failed", e)
                 }
             }
-            else{
-                Log.w("SigninActivyt", exception.toString())
-            }
+
 
         }
     }

@@ -19,19 +19,16 @@ import com.poi.camppus.MensajesActivity
 import com.poi.camppus.adapters.ListaChatAdapter
 import com.poi.camppus.R
 import com.poi.camppus.activities.SendmessagesActivity
+import com.poi.camppus.adapters.MensajesAdapter
 import com.poi.camppus.models.ReferenciasFirebase
+import com.poi.camppus.models.tbl_Mensajes
 import java.util.*
 
 class ChatsFragment : Fragment() {
      lateinit var auth: FirebaseAuth
      lateinit var MisMensajes: List<tbl_Chat>
-    val firebase  = FirebaseFirestore.getInstance();
-    var chats :List<tbl_Chat> = listOf(
-            tbl_Chat("1","alberto", listOf("sd")),
-            tbl_Chat("1","daniel", listOf("sd")),
-            tbl_Chat("1","becerra", listOf("sd")),
-            tbl_Chat("1","donato", listOf("sd"))
-    )
+    val firebase  = FirebaseFirestore.getInstance()
+
 
     private var context2:Context? = null
     private var adapter: ListaChatAdapter? = null
@@ -43,44 +40,36 @@ class ChatsFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-
         // Inflate the layout for this fragment
         var root =  inflater.inflate(R.layout.fragment_chat, container, false)
-
         auth = FirebaseAuth.getInstance()
-        obtenerListaChats()
+
         val rvChat:RecyclerView =root.findViewById<RecyclerView>(R.id.rv_lista_chats)
         rvChat.layoutManager = LinearLayoutManager(this.context2!!)
-        println(auth.currentUser.email.toString())
         val userRef = firebase.collection(ReferenciasFirebase.USERS.toString()).document(auth.currentUser.email)
         userRef.collection(ReferenciasFirebase.CHATS.toString()).get()
                 .addOnSuccessListener { document ->
                     MisMensajes= document.toObjects(tbl_Chat::class.java)
                         this.adapter = ListaChatAdapter(this.context2!!, MisMensajes)
                         rvChat.adapter = this.adapter
-
-
                 }
 
 
+        userRef.collection(ReferenciasFirebase.CHATS.toString()).addSnapshotListener(){
+            messages,error ->
+            if (error == null){
+                messages?.let {MisMensajes= it.toObjects(tbl_Chat::class.java)
+                    this.adapter = ListaChatAdapter(this.context2!!, MisMensajes)
+                    rvChat.adapter = this.adapter }
+            }
+        }
 
-
-
-
-        // Initialize Firebase Auth
-        auth = FirebaseAuth.getInstance()
 
         val fab: View = root.findViewById(R.id.fb)
         fab.setOnClickListener { view ->
             val intent = Intent (getActivity(), SendmessagesActivity::class.java)
             startActivity(intent)
         }
-
-
-
-
-
-
 
         return root
     }
@@ -90,10 +79,6 @@ class ChatsFragment : Fragment() {
         this.context2 = context
     }
 
-    private fun  obtenerListaChats(){
-
-
-    }
 
     private fun enviarMensaje() {
         val chatId = UUID.randomUUID().toString()

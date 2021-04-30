@@ -29,11 +29,6 @@ class SignInActivity : AppCompatActivity() {
     private val db = FirebaseDatabase.getInstance() //INTANCIA DE LA BASE DE DATOS
     val firebase  = FirebaseFirestore.getInstance();
 
-  //TABLAS
-    private val chatRef = db.getReference("Users") //PARA METER IMFORMACION
-
-
-    //
     lateinit var names:String
     lateinit var surnames:String
     lateinit var email:String
@@ -44,12 +39,7 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
-
-        // Initialize Firebase Auth
         auth = Firebase.auth
-
-
-
         txt_names  = findViewById(R.id.txt_signNames)
         txt_surnames = findViewById(R.id.txt_signSurnames)
         txt_email = findViewById(R.id.txt_signEmail)
@@ -89,7 +79,6 @@ class SignInActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email, pasword)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-
                     val usuario = tbl_Usuarios(id = "",names = names,surname = surnames,emails =email ,password = pasword,"img")
                     //InsertUduario(usuario)
                     Toast.makeText(baseContext, "User added.", Toast.LENGTH_SHORT).show()
@@ -97,9 +86,7 @@ class SignInActivity : AppCompatActivity() {
 
                 }
                 else {
-
                     Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
-
                 }
             }
 
@@ -126,7 +113,6 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun InsertUduario(user: tbl_Usuarios) {
-
         user.id = UUID.randomUUID().toString()
         firebase.collection(ReferenciasFirebase.USERS.toString()).document(user.id).set(user)
         //firebase.collection("USERS").add(user)
@@ -138,7 +124,6 @@ class SignInActivity : AppCompatActivity() {
         val intent:Intent = Intent(this, MainNavigationActivity::class.java)
         intent.putExtra("email",email)
         startActivity(intent)
-
     }
 
 }

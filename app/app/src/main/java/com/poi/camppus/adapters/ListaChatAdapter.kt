@@ -3,9 +3,11 @@ package com.poi.camppus.adapters
 import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
@@ -32,8 +34,11 @@ class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): Recycle
             var men: TextView = view?.findViewById(R.id.txt_mensajeItem)
             txt.text= superHero.name
             men.text = superHero.users[0]+", "+superHero.users[1]
+
             email =superHero.users[1]
             id = superHero.id
+
+
         }
         init {
             view.setOnClickListener(this)
@@ -67,9 +72,6 @@ class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): Recycle
         return LISTA.size
     }
 
-    private fun  obtenerListaChats(){
-
-    }
 
 
 }

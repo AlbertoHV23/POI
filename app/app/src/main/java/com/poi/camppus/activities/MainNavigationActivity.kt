@@ -29,11 +29,5 @@ class MainNavigationActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
 
-
-
-
-
-
-
     }
 }

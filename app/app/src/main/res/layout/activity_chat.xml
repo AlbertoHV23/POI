@@ -13,10 +13,10 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
         app:cardCornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/headerChat"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@+id/headerChat">
 
         <ImageView
             android:id="@+id/imageView3"
@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="Alberto Faniel Hernandez Villanueva"
+        android:text="Alberto Hernandez"
         android:textColor="@color/Backgorund_login"
         android:textSize="18sp"
         android:textStyle="bold"

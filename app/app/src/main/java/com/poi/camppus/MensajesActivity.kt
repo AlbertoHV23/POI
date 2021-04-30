@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alonsodelcid.multichat.models.tbl_Chat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.Query
 import com.google.firebase.database.ServerValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.poi.camppus.adapters.MensajesAdapter
@@ -54,7 +55,8 @@ class MensajesActivity : AppCompatActivity() {
         }
         val userRef = firebase.collection(ReferenciasFirebase.CHATS.toString()).document(_id)
 
-        userRef.collection(ReferenciasFirebase.MESSAGES.toString()).get()
+        userRef.collection(ReferenciasFirebase.MESSAGES.toString()).orderBy("dob",com.google.firebase.firestore.Query.Direction.ASCENDING)
+                .get()
                 .addOnSuccessListener { document ->
                     var listChats = document.toObjects(tbl_Mensajes::class.java)
                     var rv = findViewById<RecyclerView>(R.id.rv_ListaMensajes)
@@ -66,7 +68,8 @@ class MensajesActivity : AppCompatActivity() {
 
 
                 }
-        userRef.collection(ReferenciasFirebase.CHATS.toString()).addSnapshotListener(){
+        userRef.collection(ReferenciasFirebase.MESSAGES.toString()).orderBy("dob",com.google.firebase.firestore.Query.Direction.ASCENDING)
+                .addSnapshotListener(){
             messages,error ->
             if (error == null){
                 messages?.let { var listChats = it.toObjects(tbl_Mensajes::class.java)
@@ -82,6 +85,7 @@ class MensajesActivity : AppCompatActivity() {
 
     private fun enviarMensaje() {
         val mensaje = _Mensaje.text.toString()
+        val txt_mensaje_main:EditText = findViewById(R.id.txt_mensaje_main)
 
         val chat = tbl_Mensajes(
                 message = mensaje,
@@ -91,6 +95,6 @@ class MensajesActivity : AppCompatActivity() {
         )
 
         firebase.collection(ReferenciasFirebase.CHATS.toString()).document(_id).collection(ReferenciasFirebase.MESSAGES.toString()).document().set(chat)
-
+        txt_mensaje_main.setText("")
     }
 }

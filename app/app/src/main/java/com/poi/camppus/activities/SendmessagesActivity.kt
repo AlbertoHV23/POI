@@ -18,28 +18,16 @@ import java.util.*
 class SendmessagesActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private val db = FirebaseDatabase.getInstance() //INTANCIA DE LA BASE DE DATOS
-    val firebase  = FirebaseFirestore.getInstance();
-
-    //TABLAS
-    private val MessagesRef = db.getReference("Messages") //PARA METER IMFORMACION
-
+    val firebase  = FirebaseFirestore.getInstance()
     private  lateinit  var destinatario:EditText
-
     private  lateinit var mensajes: tbl_Mensajes
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sendmessages)
-
         auth = FirebaseAuth.getInstance()
-
         destinatario = findViewById(R.id.txt_sendDestinatario)
-        //var contenido:EditText = findViewById(R.id.txt_contenido_enviarMensaje)
         var btn_enviar: Button = findViewById(R.id.btn_sendmensaje)
-
-        obtenerListaChats()
-
-
-
 
         btn_enviar.setOnClickListener(){
 
