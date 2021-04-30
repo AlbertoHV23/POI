@@ -25,11 +25,15 @@ class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): Recycle
     private lateinit var auth: FirebaseAuth
     val firebase  = FirebaseFirestore.getInstance();
     inner class Holder(val view: View):RecyclerView.ViewHolder(view), View.OnClickListener{
+        lateinit var  email:String
+        lateinit var id:String
         fun render(superHero: tbl_Chat) {
             var txt: TextView = view?.findViewById(R.id.id_texto)
             var men: TextView = view?.findViewById(R.id.txt_mensajeItem)
             txt.text= superHero.name
             men.text = superHero.users[0]+", "+superHero.users[1]
+            email =superHero.users[1]
+            id = superHero.id
         }
         init {
             view.setOnClickListener(this)
@@ -39,7 +43,8 @@ class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): Recycle
             when(v!!.id){
                 R.id.Item_abrirchat -> {
                     val  activityIntent =  Intent(context,MensajesActivity::class.java)
-                   // activityIntent.putExtra(ALBUM_POSITION,this.albumPosition)
+                   activityIntent.putExtra("EMAIL",this.email)
+                    activityIntent.putExtra("ID",this.id)
                     context.startActivity(activityIntent)
                 }
             }

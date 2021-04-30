@@ -1,17 +1,13 @@
 package com.poi.camppus.models
 
 import com.google.firebase.database.Exclude
+import java.util.*
 
-class tbl_Mensajes(
-    var id: String = "",
-    var contenido: String = "",
-    var de: String = "",
-    var para: String = "",
-    val timeStamp: Any? = null
-) {
-    @Exclude
-    var esMio: Boolean = false
-}
+data class tbl_Mensajes (
+        var message: String = "",
+        var from: String = "",
+        var dob: Date = Date()
+)
 
 
 

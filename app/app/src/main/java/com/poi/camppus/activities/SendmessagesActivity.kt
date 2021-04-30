@@ -51,30 +51,28 @@ class SendmessagesActivity : AppCompatActivity() {
 
     }
     private fun  obtenerListaChats(){
-        val userRef = firebase.collection(ReferenciasFirebase.USERS.toString()).document(auth.currentUser.email)
-        userRef.collection(ReferenciasFirebase.CHATS.toString()).get()
+        val userRef = firebase.collection(ReferenciasFirebase.CHATS.toString()).document(auth.currentUser.email)
+        userRef.collection(ReferenciasFirebase.MESSAGES.toString()).get()
                 .addOnSuccessListener { document ->
-                    var listChats = document.toObjects(tbl_Chat::class.java)
-                    println("test")
-                    println(listChats)
+                    var listChats = document.toObjects(tbl_Mensajes::class.java)
 
                 }
 
     }
 
     private fun enviarMensaje() {
-        val chatId = ServerValue.TIMESTAMP.toString()
+        var chatId= UUID.randomUUID()
         val otherUser = destinatario.text.toString()
         val users = listOf(auth.currentUser.email, otherUser)
         val chat = tbl_Chat(
-                id = chatId,
+                id = chatId.toString(),
                 name = "Chat con $otherUser",
                 users = users
         )
 
-        firebase.collection(ReferenciasFirebase.CHATS.toString()).document(chatId).set(chat)
-        firebase.collection(ReferenciasFirebase.USERS.toString()).document(auth.currentUser.email).collection(ReferenciasFirebase.CHATS.toString()).document(chatId).set(chat)
-        firebase.collection(ReferenciasFirebase.USERS.toString()).document(otherUser).collection(ReferenciasFirebase.CHATS.toString()).document(chatId).set(chat)
+        firebase.collection(ReferenciasFirebase.CHATS.toString()).document(chatId.toString()).set(chat)
+        firebase.collection(ReferenciasFirebase.USERS.toString()).document(auth.currentUser.email).collection(ReferenciasFirebase.CHATS.toString()).document(chatId.toString()).set(chat)
+        firebase.collection(ReferenciasFirebase.USERS.toString()).document(otherUser).collection(ReferenciasFirebase.CHATS.toString()).document(chatId.toString()).set(chat)
 
     }
 

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
+    android:gravity="right"
     android:orientation="vertical">
 
     <LinearLayout
@@ -11,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#80C686D1"
+        android:gravity="right|left"
         android:orientation="vertical"
         android:padding="8dp">
 

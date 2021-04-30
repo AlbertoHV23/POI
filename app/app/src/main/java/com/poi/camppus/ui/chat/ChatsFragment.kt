@@ -56,8 +56,8 @@ class ChatsFragment : Fragment() {
         userRef.collection(ReferenciasFirebase.CHATS.toString()).get()
                 .addOnSuccessListener { document ->
                     MisMensajes= document.toObjects(tbl_Chat::class.java)
-                    this.adapter = ListaChatAdapter(this.context2!!, MisMensajes)
-                    rvChat.adapter = this.adapter
+                        this.adapter = ListaChatAdapter(this.context2!!, MisMensajes)
+                        rvChat.adapter = this.adapter
 
 
                 }

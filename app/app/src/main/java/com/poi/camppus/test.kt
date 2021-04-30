@@ -16,9 +16,7 @@ class test : AppCompatActivity() {
         tbl_Chat("1","daniel", listOf("sd"))
     )
     var list: List<tbl_Mensajes> = listOf(
-        tbl_Mensajes("id","contenido","alberto","tal", ServerValue.TIMESTAMP),
-        tbl_Mensajes("id","sdf","sdf","tal", ServerValue.TIMESTAMP),
-        tbl_Mensajes("id","sdfsdfsdf","alsdfberto","tal", ServerValue.TIMESTAMP)
+
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
