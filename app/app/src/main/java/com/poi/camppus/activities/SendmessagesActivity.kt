@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.alonsodelcid.multichat.models.tbl_Chat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -37,7 +38,9 @@ class SendmessagesActivity : AppCompatActivity() {
         }
         btn_add.setOnClickListener(){
             grupo.add(destinatario.text.toString())
-            println(grupo)
+            Toast.makeText(this, "Added to ${destinatario.text.toString()} to group", Toast.LENGTH_SHORT).show()
+
+
         }
 
 
@@ -50,13 +53,26 @@ class SendmessagesActivity : AppCompatActivity() {
         var chatId= UUID.randomUUID()
         val otherUser = destinatario.text.toString()
         val users = listOf(auth.currentUser.email, otherUser)
+        var chat: tbl_Chat? = null
+
 
         grupo.add(auth.currentUser.email)
-        val chat = tbl_Chat(
-                id = chatId.toString(),
-                name = "$otherUser",
-                users = grupo
-        )
+        if(grupo.size >2){
+             chat = tbl_Chat(
+                    id = chatId.toString(),
+                    name = "Group Chat",
+                    users = grupo
+            )
+
+        }
+        else{
+            chat = tbl_Chat(
+                    id = chatId.toString(),
+                    name = "$otherUser",
+                    users = grupo
+            )
+
+        }
 
 
 
@@ -66,7 +82,7 @@ class SendmessagesActivity : AppCompatActivity() {
                 firebase.collection(ReferenciasFirebase.USERS.toString()).document(item).collection(ReferenciasFirebase.CHATS.toString()).document(chatId.toString()).set(chat)
             }
         }
-
+        destinatario.setText("")
     }
 
 

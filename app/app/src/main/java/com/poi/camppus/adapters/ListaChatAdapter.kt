@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
@@ -22,6 +23,7 @@ import com.poi.camppus.activities.MainNavigationActivity
 import com.poi.camppus.activities.SendmessagesActivity
 import com.poi.camppus.models.ReferenciasFirebase
 import com.poi.camppus.models.tbl_Mensajes
+import com.squareup.picasso.Picasso
 
 class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): RecyclerView.Adapter<ListaChatAdapter.Holder>(){
     private lateinit var auth: FirebaseAuth
@@ -34,6 +36,10 @@ class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): Recycle
 
                 var txt: TextView = view?.findViewById(R.id.id_texto)
                 var men: TextView = view?.findViewById(R.id.txt_mensajeItem)
+                var img:ImageView = view?.findViewById(R.id.imageView5)
+
+                Picasso.get().load("https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg").into(img)
+
                 var otherUser = ""
                 txt.text= superHero.name
                 for (item:String in superHero.users){

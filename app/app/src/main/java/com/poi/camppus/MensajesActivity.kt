@@ -2,10 +2,7 @@ package com.poi.camppus
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alonsodelcid.multichat.models.tbl_Chat
@@ -17,6 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.poi.camppus.adapters.MensajesAdapter
 import com.poi.camppus.models.ReferenciasFirebase
 import com.poi.camppus.models.tbl_Mensajes
+import com.squareup.picasso.Picasso
 import java.util.*
 
 class MensajesActivity : AppCompatActivity() {
@@ -33,12 +31,17 @@ class MensajesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
+        setTheme(R.style.Theme_Camppus_login)
 
         auth = FirebaseAuth.getInstance()
 
         var ema=  intent.getStringExtra("EMAIL")
         var uid=  intent.getStringExtra("ID")
         var username:TextView = findViewById(R.id.txt_UsernameMensaje)
+        var img: ImageView = findViewById(R.id.imageView3)
+
+        Picasso.get().load("https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg").into(img)
+
         username.text = ema
 
         _Mensaje = findViewById(R.id.txt_mensaje_main)
