@@ -13,32 +13,21 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.poi.camppus.activities.MensajesActivity
 import com.poi.camppus.R
+import com.poi.camppus.models.tbl_groups
 import com.squareup.picasso.Picasso
 
-class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): RecyclerView.Adapter<ListaChatAdapter.Holder>(){
+class GroupsAdapter (val context: Context, var LISTA:List<tbl_groups>): RecyclerView.Adapter<GroupsAdapter.Holder>(){
     private lateinit var auth: FirebaseAuth
     val firebase  = FirebaseFirestore.getInstance();
     inner class Holder(val view: View):RecyclerView.ViewHolder(view), View.OnClickListener{
         lateinit var  email:String
         lateinit var id:String
-        fun render(superHero: tbl_Chat) {
+        fun render(superHero: tbl_groups) {
             if (superHero != null){
+                var team: TextView = view?.findViewById(R.id.txt_name_grupo)
+                //var img: ImageView = view?.findViewById(R.id.img_grupo)
+                team.text = superHero.name
 
-                var txt: TextView = view?.findViewById(R.id.id_texto)
-                var men: TextView = view?.findViewById(R.id.txt_mensajeItem)
-                var img:ImageView = view?.findViewById(R.id.imageView5)
-
-                Picasso.get().load("https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg").into(img)
-
-                var otherUser = ""
-                txt.text= superHero.name
-                for (item:String in superHero.users){
-                    otherUser = "$otherUser , $item"
-                }
-                men.text = otherUser
-
-                email =superHero.users[1]
-                id = superHero.id
 
             }
 
@@ -51,12 +40,7 @@ class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): Recycle
 
         override fun onClick(v: View?) {
             when(v!!.id){
-                R.id.Item_abrirchat -> {
-                    val  activityIntent =  Intent(context, MensajesActivity::class.java)
-                   activityIntent.putExtra("EMAIL",this.email)
-                    activityIntent.putExtra("ID",this.id)
-                    context.startActivity(activityIntent)
-                }
+
             }
 
         }
@@ -66,7 +50,7 @@ class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): Recycle
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return Holder(layoutInflater.inflate(R.layout.item_lista_chats,parent,false))
+        return Holder(layoutInflater.inflate(R.layout.item_lista_grupos,parent,false))
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {

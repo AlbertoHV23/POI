@@ -1,21 +1,18 @@
-package com.poi.camppus
+package com.poi.camppus.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.alonsodelcid.multichat.models.tbl_Chat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.Query
-import com.google.firebase.database.ServerValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.poi.camppus.R
 import com.poi.camppus.adapters.MensajesAdapter
 import com.poi.camppus.models.ReferenciasFirebase
 import com.poi.camppus.models.tbl_Mensajes
 import com.squareup.picasso.Picasso
-import java.util.*
 
 class MensajesActivity : AppCompatActivity() {
 

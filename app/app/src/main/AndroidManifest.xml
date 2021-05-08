@@ -9,7 +9,7 @@
         android:roundIcon="@drawable/logo150"
         android:supportsRtl="true"
         android:theme="@style/Theme.Camppus">
-        <activity android:name=".MensajesActivity"></activity>
+        <activity android:name=".activities.MensajesActivity"></activity>
         <activity android:name=".test"></activity>
         <activity android:name=".activities.SendmessagesActivity" />
         <activity

@@ -1,21 +1,14 @@
 package com.poi.camppus.adapters
 
 import android.content.Context
-import android.content.Intent
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.alonsodelcid.multichat.models.tbl_Chat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.poi.camppus.MensajesActivity
 import com.poi.camppus.R
 import com.poi.camppus.models.tbl_Mensajes
 
