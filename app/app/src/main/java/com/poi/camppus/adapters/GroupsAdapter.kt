@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alonsodelcid.multichat.models.tbl_Chat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.poi.camppus.GroupActivity
+import com.poi.camppus.GroupPageActivity
 import com.poi.camppus.activities.MensajesActivity
 import com.poi.camppus.R
 import com.poi.camppus.models.tbl_groups
@@ -40,6 +42,10 @@ class GroupsAdapter (val context: Context, var LISTA:List<tbl_groups>): Recycler
 
         override fun onClick(v: View?) {
             when(v!!.id){
+                R.id.item_lista_groups ->{
+                    val  activityIntent =  Intent(context, GroupPageActivity::class.java)
+                    context.startActivity(activityIntent)
+                }
 
             }
 

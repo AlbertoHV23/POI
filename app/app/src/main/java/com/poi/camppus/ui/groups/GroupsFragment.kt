@@ -1,6 +1,7 @@
 package com.poi.camppus.ui.groups
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alonsodelcid.multichat.models.tbl_Chat
+import com.poi.camppus.AddGroupActivity
 import com.poi.camppus.R
+import com.poi.camppus.activities.SendmessagesActivity
 import com.poi.camppus.adapters.GroupsAdapter
 import com.poi.camppus.adapters.ListaChatAdapter
 import com.poi.camppus.adapters.MensajesAdapter
@@ -42,6 +45,13 @@ class GroupsFragment : Fragment() {
 
 
 
+
+
+        val fab: View = root.findViewById(R.id.btn_newGroup)
+        fab.setOnClickListener { view ->
+            val intent = Intent (getActivity(), AddGroupActivity::class.java)
+            startActivity(intent)
+        }
         return root
     }
 

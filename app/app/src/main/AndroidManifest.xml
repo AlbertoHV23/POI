@@ -9,12 +9,17 @@
         android:roundIcon="@drawable/logo150"
         android:supportsRtl="true"
         android:theme="@style/Theme.Camppus">
-        <activity android:name=".activities.MensajesActivity"></activity>
-        <activity android:name=".test"></activity>
+        <activity android:name=".GroupPageActivity">
+
+        </activity>
+        <activity android:name=".GroupActivity" />
+        <activity android:name=".AddGroupActivity" />
+        <activity android:name=".activities.MensajesActivity" />
+        <activity android:name=".test" />
         <activity android:name=".activities.SendmessagesActivity" />
         <activity
             android:name=".activities.MainNavigationActivity"
-            android:label="@string/title_activity_main_navigation"></activity>
+            android:label="@string/title_activity_main_navigation" />
         <activity android:name=".activities.SignInActivity" />
         <activity
             android:name=".activities.LoginActivity"
@@ -24,6 +29,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 

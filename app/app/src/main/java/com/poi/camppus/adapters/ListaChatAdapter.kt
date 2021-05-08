@@ -21,6 +21,8 @@ class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): Recycle
     inner class Holder(val view: View):RecyclerView.ViewHolder(view), View.OnClickListener{
         lateinit var  email:String
         lateinit var id:String
+        var otherUser = ""
+        var desti = ""
         fun render(superHero: tbl_Chat) {
             if (superHero != null){
 
@@ -30,8 +32,10 @@ class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): Recycle
 
                 Picasso.get().load("https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg").into(img)
 
-                var otherUser = ""
+
                 txt.text= superHero.name
+                desti = superHero.users[0]
+
                 for (item:String in superHero.users){
                     otherUser = "$otherUser , $item"
                 }
@@ -53,7 +57,7 @@ class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): Recycle
             when(v!!.id){
                 R.id.Item_abrirchat -> {
                     val  activityIntent =  Intent(context, MensajesActivity::class.java)
-                   activityIntent.putExtra("EMAIL",this.email)
+                   activityIntent.putExtra("EMAIL",this.desti)
                     activityIntent.putExtra("ID",this.id)
                     context.startActivity(activityIntent)
                 }
