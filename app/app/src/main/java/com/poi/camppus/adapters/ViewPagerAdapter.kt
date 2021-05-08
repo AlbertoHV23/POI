@@ -4,9 +4,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.poi.camppus.FragmentFiles
-import com.poi.camppus.FragmentPost
-import com.poi.camppus.FragmentsGroupAssigments
+import com.poi.camppus.ui.groups.FragmentFiles
+import com.poi.camppus.ui.groups.FragmentPost
+import com.poi.camppus.ui.groups.FragmentsGroupAssigments
 
 class ViewPagerAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle):
     FragmentStateAdapter(fragmentManager,lifecycle) {

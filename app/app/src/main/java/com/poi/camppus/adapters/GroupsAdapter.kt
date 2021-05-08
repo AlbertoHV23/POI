@@ -5,18 +5,13 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.alonsodelcid.multichat.models.tbl_Chat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.poi.camppus.GroupActivity
-import com.poi.camppus.GroupPageActivity
-import com.poi.camppus.activities.MensajesActivity
+import com.poi.camppus.activities.GroupPageActivity
 import com.poi.camppus.R
 import com.poi.camppus.models.tbl_groups
-import com.squareup.picasso.Picasso
 
 class GroupsAdapter (val context: Context, var LISTA:List<tbl_groups>): RecyclerView.Adapter<GroupsAdapter.Holder>(){
     private lateinit var auth: FirebaseAuth

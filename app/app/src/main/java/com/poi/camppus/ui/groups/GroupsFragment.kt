@@ -6,19 +6,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.alonsodelcid.multichat.models.tbl_Chat
-import com.poi.camppus.AddGroupActivity
+import com.poi.camppus.activities.AddGroupActivity
 import com.poi.camppus.R
-import com.poi.camppus.activities.SendmessagesActivity
 import com.poi.camppus.adapters.GroupsAdapter
-import com.poi.camppus.adapters.ListaChatAdapter
-import com.poi.camppus.adapters.MensajesAdapter
 import com.poi.camppus.models.tbl_groups
 
 class GroupsFragment : Fragment() {

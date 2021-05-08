@@ -9,11 +9,11 @@
         android:roundIcon="@drawable/logo150"
         android:supportsRtl="true"
         android:theme="@style/Theme.Camppus">
-        <activity android:name=".GroupPageActivity">
+        <activity android:name=".activities.GroupPageActivity">
 
         </activity>
         <activity android:name=".GroupActivity" />
-        <activity android:name=".AddGroupActivity" />
+        <activity android:name=".activities.AddGroupActivity" />
         <activity android:name=".activities.MensajesActivity" />
         <activity android:name=".test" />
         <activity android:name=".activities.SendmessagesActivity" />

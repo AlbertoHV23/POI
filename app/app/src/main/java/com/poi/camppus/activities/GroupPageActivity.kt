@@ -1,15 +1,16 @@
-package com.poi.camppus
+package com.poi.camppus.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.poi.camppus.R
 import com.poi.camppus.adapters.ViewPagerAdapter
 
 class GroupPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Camppus_login)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_page)
 
