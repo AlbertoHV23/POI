@@ -2,6 +2,7 @@ package com.poi.camppus.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -19,6 +20,11 @@ class GroupPageActivity : AppCompatActivity() {
 
         val adapter = ViewPagerAdapter(supportFragmentManager,lifecycle)
         viewPager.adapter = adapter
+
+        var NOMBRE=  intent.getStringExtra("NAMETEAM")
+        var txt_name:TextView = findViewById(R.id.txt_GroupName3)
+
+        txt_name.text = NOMBRE
 
         TabLayoutMediator(tabLayout,viewPager){
             tab,position->

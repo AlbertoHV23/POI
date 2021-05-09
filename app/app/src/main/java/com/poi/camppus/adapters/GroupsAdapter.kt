@@ -17,6 +17,7 @@ class GroupsAdapter (val context: Context, var LISTA:List<tbl_groups>): Recycler
     private lateinit var auth: FirebaseAuth
     val firebase  = FirebaseFirestore.getInstance();
     inner class Holder(val view: View):RecyclerView.ViewHolder(view), View.OnClickListener{
+        var NAMETEAM:String = ""
         lateinit var  email:String
         lateinit var id:String
         fun render(superHero: tbl_groups) {
@@ -24,6 +25,7 @@ class GroupsAdapter (val context: Context, var LISTA:List<tbl_groups>): Recycler
                 var team: TextView = view?.findViewById(R.id.txt_name_grupo)
                 //var img: ImageView = view?.findViewById(R.id.img_grupo)
                 team.text = superHero.name
+                NAMETEAM =  superHero.name
 
 
             }
@@ -39,6 +41,7 @@ class GroupsAdapter (val context: Context, var LISTA:List<tbl_groups>): Recycler
             when(v!!.id){
                 R.id.item_lista_groups ->{
                     val  activityIntent =  Intent(context, GroupPageActivity::class.java)
+                    activityIntent.putExtra("NAMETEAM",this.NAMETEAM)
                     context.startActivity(activityIntent)
                 }
 

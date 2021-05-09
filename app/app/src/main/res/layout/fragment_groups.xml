@@ -7,7 +7,7 @@
     tools:context=".ui.groups.GroupsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_equipos"
+        android:id="@+id/rv_listaEquipos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="60dp"

@@ -57,7 +57,7 @@ class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): Recycle
             when(v!!.id){
                 R.id.Item_abrirchat -> {
                     val  activityIntent =  Intent(context, MensajesActivity::class.java)
-                   activityIntent.putExtra("EMAIL",this.desti)
+                    activityIntent.putExtra("EMAIL",this.desti)
                     activityIntent.putExtra("ID",this.id)
                     context.startActivity(activityIntent)
                 }
