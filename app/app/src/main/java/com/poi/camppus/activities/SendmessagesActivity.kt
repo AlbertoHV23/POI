@@ -6,13 +6,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.alonsodelcid.multichat.models.tbl_Chat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.poi.camppus.R
 import com.poi.camppus.models.ReferenciasFirebase
+import com.poi.camppus.models.tbl_Chat
 import com.poi.camppus.models.tbl_Mensajes
 import java.util.*
 
@@ -21,6 +21,8 @@ class SendmessagesActivity : AppCompatActivity() {
     private val db = FirebaseDatabase.getInstance() //INTANCIA DE LA BASE DE DATOS
     val firebase  = FirebaseFirestore.getInstance()
     private  lateinit  var destinatario:EditText
+    private  lateinit  var nameChat:EditText
+
     var grupo:MutableList<String> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,13 +30,16 @@ class SendmessagesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sendmessages)
         auth = FirebaseAuth.getInstance()
         destinatario = findViewById(R.id.txt_sendDestinatario)
+        nameChat = findViewById(R.id.nameChat)
 
         var btn_enviar: Button = findViewById(R.id.btn_sendmensaje)
         var btn_add: Button = findViewById(R.id.Agregar_grupo)
 
         btn_enviar.setOnClickListener(){
-           enviarMensaje()
-            finish()
+                enviarMensaje()
+                finish()
+
+
         }
         btn_add.setOnClickListener(){
             grupo.add(destinatario.text.toString())
@@ -57,22 +62,13 @@ class SendmessagesActivity : AppCompatActivity() {
 
 
         grupo.add(auth.currentUser.email)
-        if(grupo.size >2){
-             chat = tbl_Chat(
-                    id = chatId.toString(),
-                    name = "Group Chat",
-                    users = grupo
-            )
 
-        }
-        else{
             chat = tbl_Chat(
                     id = chatId.toString(),
-                    name = "$otherUser",
+                    name = nameChat.text.toString(),
                     users = grupo
             )
 
-        }
 
 
 

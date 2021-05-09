@@ -23,37 +23,35 @@
         android:id="@+id/btn_sendmensaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="New chat"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="30dp"
+        android:text="Create chat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_sendDestinatario" />
 
     <EditText
         android:id="@+id/txt_sendDestinatario"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="email:"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="@+id/headerChat"
         app:layout_constraintEnd_toStartOf="@+id/Agregar_grupo"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="to:"
+        android:layout_marginTop="20dp"
+        android:text="Members:"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_sendDestinatario"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txt_sendDestinatario" />
+        app:layout_constraintTop_toBottomOf="@+id/headerChat" />
 
     <Button
         android:id="@+id/Agregar_grupo"
@@ -64,5 +62,21 @@
         app:layout_constraintBottom_toBottomOf="@+id/txt_sendDestinatario"
         app:layout_constraintEnd_toEndOf="@+id/headerChat"
         app:layout_constraintTop_toTopOf="@+id/txt_sendDestinatario" />
+
+    <EditText
+        android:id="@+id/nameChat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:hint="Name:"
+        android:inputType="textPersonName"
+        android:textColor="@color/Backgorund_login"
+        android:textColorHint="@color/Backgorund_login"
+        app:layout_constraintBottom_toBottomOf="@+id/headerChat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/headerChat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

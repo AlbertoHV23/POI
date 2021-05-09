@@ -23,9 +23,10 @@ class GroupsAdapter (val context: Context, var LISTA:List<tbl_groups>): Recycler
         fun render(superHero: tbl_groups) {
             if (superHero != null){
                 var team: TextView = view?.findViewById(R.id.txt_name_grupo)
-                //var img: ImageView = view?.findViewById(R.id.img_grupo)
+
                 team.text = superHero.name
-                NAMETEAM =  superHero.name
+                this.NAMETEAM =  superHero.name
+                this.id = superHero.id
 
 
             }
@@ -42,6 +43,8 @@ class GroupsAdapter (val context: Context, var LISTA:List<tbl_groups>): Recycler
                 R.id.item_lista_groups ->{
                     val  activityIntent =  Intent(context, GroupPageActivity::class.java)
                     activityIntent.putExtra("NAMETEAM",this.NAMETEAM)
+                    activityIntent.putExtra("ID",this.id)
+                    println(this.id)
                     context.startActivity(activityIntent)
                 }
 

@@ -10,13 +10,13 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.alonsodelcid.multichat.models.tbl_Chat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.poi.camppus.adapters.ListaChatAdapter
 import com.poi.camppus.R
 import com.poi.camppus.activities.SendmessagesActivity
 import com.poi.camppus.models.ReferenciasFirebase
+import com.poi.camppus.models.tbl_Chat
 
 class ChatsFragment : Fragment() {
      lateinit var auth: FirebaseAuth

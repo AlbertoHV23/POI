@@ -4,10 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.alonsodelcid.multichat.models.tbl_Chat
 import com.google.firebase.database.ServerValue
 import com.poi.camppus.adapters.ListaChatAdapter
 import com.poi.camppus.adapters.MensajesAdapter
+import com.poi.camppus.models.tbl_Chat
 import com.poi.camppus.models.tbl_Mensajes
 
 class test : AppCompatActivity() {

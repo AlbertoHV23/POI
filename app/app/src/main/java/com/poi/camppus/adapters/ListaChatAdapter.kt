@@ -8,14 +8,16 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.alonsodelcid.multichat.models.tbl_Chat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.poi.camppus.activities.MensajesActivity
 import com.poi.camppus.R
+import com.poi.camppus.models.tbl_Chat
+import com.poi.camppus.models.tbl_groups
+import com.poi.camppus.models.tbl_posts
 import com.squareup.picasso.Picasso
 
-class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): RecyclerView.Adapter<ListaChatAdapter.Holder>(){
+class ListaChatAdapter(val context: Context, var LISTA:List<tbl_Chat>): RecyclerView.Adapter<ListaChatAdapter.Holder>(){
     private lateinit var auth: FirebaseAuth
     val firebase  = FirebaseFirestore.getInstance();
     inner class Holder(val view: View):RecyclerView.ViewHolder(view), View.OnClickListener{
@@ -23,6 +25,7 @@ class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): Recycle
         lateinit var id:String
         var otherUser = ""
         var desti = ""
+        var NAME = ""
         fun render(superHero: tbl_Chat) {
             if (superHero != null){
 
@@ -35,6 +38,7 @@ class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): Recycle
 
                 txt.text= superHero.name
                 desti = superHero.users[0]
+                NAME = superHero.name
 
                 for (item:String in superHero.users){
                     otherUser = "$otherUser , $item"
@@ -58,6 +62,7 @@ class ListaChatAdapter (val context: Context, var LISTA:List<tbl_Chat>): Recycle
                 R.id.Item_abrirchat -> {
                     val  activityIntent =  Intent(context, MensajesActivity::class.java)
                     activityIntent.putExtra("EMAIL",this.desti)
+                    activityIntent.putExtra("CHATNAME",this.NAME)
                     activityIntent.putExtra("ID",this.id)
                     context.startActivity(activityIntent)
                 }

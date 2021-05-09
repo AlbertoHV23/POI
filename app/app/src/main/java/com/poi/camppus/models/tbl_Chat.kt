@@ -1,4 +1,4 @@
-package com.alonsodelcid.multichat.models
+package com.poi.camppus.models
 
 data class tbl_Chat(
     var id: String = "",

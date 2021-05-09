@@ -34,12 +34,14 @@ class MensajesActivity : AppCompatActivity() {
 
         var ema=  intent.getStringExtra("EMAIL")
         var uid=  intent.getStringExtra("ID")
+        var ChatName=  intent.getStringExtra("CHATNAME")
+
         var username:TextView = findViewById(R.id.txt_UsernameMensaje)
         var img: ImageView = findViewById(R.id.imageView3)
 
         Picasso.get().load("https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg").into(img)
 
-        username.text = ema
+        username.text = ChatName
 
         _Mensaje = findViewById(R.id.txt_mensaje_main)
         if (uid != null) {

@@ -14,14 +14,17 @@ class GroupPageActivity : AppCompatActivity() {
         setTheme(R.style.Theme_Camppus_login)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_page)
+        var NOMBRE=  intent.getStringExtra("NAMETEAM")
+        var uid: String? =  intent.getStringExtra("ID")
 
         val tabLayout = findViewById<TabLayout>(R.id.tab_layout)
         val viewPager = findViewById<ViewPager2>(R.id.viewpager)
 
-        val adapter = ViewPagerAdapter(supportFragmentManager,lifecycle)
+        val adapter = uid?.let { ViewPagerAdapter(supportFragmentManager,lifecycle, it) }
         viewPager.adapter = adapter
 
-        var NOMBRE=  intent.getStringExtra("NAMETEAM")
+
+
         var txt_name:TextView = findViewById(R.id.txt_GroupName3)
 
         txt_name.text = NOMBRE

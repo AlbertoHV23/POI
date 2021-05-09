@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.alonsodelcid.multichat.models.tbl_Chat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.poi.camppus.activities.AddGroupActivity
@@ -52,6 +51,7 @@ class GroupsFragment : Fragment() {
                     this.adapter = GroupsAdapter(this.context2!!, misGrupos)
                     rvChat.adapter = this.adapter
                 }
+
         teamsRef.collection(ReferenciasFirebase.TEAMS.toString()).addSnapshotListener(){
             messages,error ->
             if (error == null){
