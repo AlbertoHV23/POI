@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -12,6 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.poi.camppus.activities.GroupPageActivity
 import com.poi.camppus.R
 import com.poi.camppus.models.tbl_groups
+import com.squareup.picasso.Picasso
 
 class GroupsAdapter (val context: Context, var LISTA:List<tbl_groups>): RecyclerView.Adapter<GroupsAdapter.Holder>(){
     private lateinit var auth: FirebaseAuth
@@ -23,6 +25,8 @@ class GroupsAdapter (val context: Context, var LISTA:List<tbl_groups>): Recycler
         fun render(superHero: tbl_groups) {
             if (superHero != null){
                 var team: TextView = view?.findViewById(R.id.txt_name_grupo)
+                var imagen:ImageView =  view?.findViewById(R.id.img_grupo)
+                Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/camppus-224af.appspot.com/o/IconTeams.jpg?alt=media&token=d1c3f480-9de1-438a-bd42-3046de17480a").into(imagen)
 
                 team.text = superHero.name
                 this.NAMETEAM =  superHero.name

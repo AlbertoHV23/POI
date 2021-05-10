@@ -5,5 +5,6 @@ class tbl_Usuarios(var id:String,
                    var surname:String,
                    var emails:String,
                    var password :String,
-                   var image:String?) {
+                   var image:String?,
+                    var estado:String)  {
 }

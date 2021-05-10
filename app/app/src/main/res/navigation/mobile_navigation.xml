@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.poi.camppus.ui.profile.Porfileragment"
+        android:name="com.poi.camppus.ui.profile.PorfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 

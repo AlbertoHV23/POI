@@ -33,7 +33,7 @@ class ListaChatAdapter(val context: Context, var LISTA:List<tbl_Chat>): Recycler
                 var men: TextView = view?.findViewById(R.id.txt_mensajeItem)
                 var img:ImageView = view?.findViewById(R.id.imageView5)
 
-                Picasso.get().load("https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg").into(img)
+                Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/camppus-224af.appspot.com/o/logoDeafult.jpg?alt=media&token=2c018c0d-340b-4853-8fb6-7fe71f2287d7").into(img)
 
 
                 txt.text= superHero.name

@@ -79,8 +79,8 @@ class SignInActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email, pasword)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    val usuario = tbl_Usuarios(id = "",names = names,surname = surnames,emails =email ,password = pasword,"img")
-                    //InsertUduario(usuario)
+                    val usuario = tbl_Usuarios(id = email,names = names,surname = surnames,emails =email ,password = pasword,"https://firebasestorage.googleapis.com/v0/b/camppus-224af.appspot.com/o/logoDeafult.jpg?alt=media&token=2c018c0d-340b-4853-8fb6-7fe71f2287d7","Disponible")
+                    InsertUduario(usuario)
                     Toast.makeText(baseContext, "User added.", Toast.LENGTH_SHORT).show()
                     showHome(usuario)
 
@@ -114,7 +114,8 @@ class SignInActivity : AppCompatActivity() {
 
     private fun InsertUduario(user: tbl_Usuarios) {
         user.id = UUID.randomUUID().toString()
-        firebase.collection(ReferenciasFirebase.USERS.toString()).document(user.id).set(user)
+        firebase.collection(ReferenciasFirebase.USERS.toString()).document(user.emails).set(user)
+
         //firebase.collection("USERS").add(user)
     }
 
