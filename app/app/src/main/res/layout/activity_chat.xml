@@ -29,7 +29,7 @@
         android:id="@+id/headerChat"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        app:cardBackgroundColor="@color/purple_200"
+        app:cardBackgroundColor="@color/color3"
         app:cardElevation="0dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp">
@@ -43,8 +43,10 @@
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/txt_mensaje_main"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerChat"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_lista_mensajes">
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -56,9 +58,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/style_border"
+        android:backgroundTint="#E8E6FF"
         android:ems="10"
-        android:hint="Write a message"
+        android:hint="Write a message..."
         android:inputType="textPersonName"
+        android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_enviarmensajemain"
         app:layout_constraintStart_toStartOf="parent" />
@@ -79,11 +84,14 @@
 
     <Button
         android:id="@+id/btn_enviarmensajemain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="61dp"
+        android:layout_height="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/send"
+        android:background="@drawable/style_border"
+        android:backgroundTint="#7B6CEA"
+        android:drawableEnd="@drawable/ic_send_foreground"
+        android:drawableTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

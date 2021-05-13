@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        app:cardBackgroundColor="#34D500F9">
+        app:cardBackgroundColor="#E8E6FF">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="30dp"
                 android:text="TextView"
-                android:textColor="@color/Titulo"
+                android:textColor="@color/color3"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -35,15 +35,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="9:12 am"
-                android:textColor="@color/black"
+                android:textColor="#626267"
                 app:layout_constraintBottom_toBottomOf="@+id/cardView4"
                 app:layout_constraintStart_toStartOf="@+id/textView12"
-                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                app:layout_constraintTop_toBottomOf="@+id/textView12"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/textView14"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="336dp"
+                android:layout_height="68dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:text="Post"

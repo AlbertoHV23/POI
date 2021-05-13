@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Morado_bold" parent="@android:style/TextAppearance.Material.Medium">
-        <item name="android:textColor">@color/Titulo</item>
+        <item name="android:textColor">@color/color3</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">20dp</item>
     </style>

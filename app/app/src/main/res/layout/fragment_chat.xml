@@ -14,8 +14,10 @@
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="30dp"
         android:background="#D500F9"
+        android:backgroundTint="@color/color3"
         android:clickable="true"
         android:src="@drawable/ic_baseline_message_24"
+        app:backgroundTint="@color/color3"
         app:layout_constraintBottom_toBottomOf="@+id/rv_lista_chats"
         app:layout_constraintEnd_toEndOf="@+id/rv_lista_chats" />
 

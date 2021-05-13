@@ -12,7 +12,7 @@
         android:id="@+id/headerChat"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        app:cardBackgroundColor="@color/purple_200"
+        app:cardBackgroundColor="@color/color3"
         app:cardElevation="0dp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp">
@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="Create chat"
+        android:background="@drawable/style_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_sendDestinatario" />
@@ -37,6 +38,9 @@
         android:ems="10"
         android:hint="email:"
         android:inputType="textEmailAddress"
+        android:background="@drawable/style_border"
+        android:backgroundTint="#E8E6FF"
+        android:padding="10dp"
         app:layout_constraintEnd_toStartOf="@+id/Agregar_grupo"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -48,6 +52,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="Members:"
+        android:textColor="@color/color3"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,12 +60,15 @@
 
     <Button
         android:id="@+id/Agregar_grupo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
+        android:layout_width="87dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/style_border"
         android:text="Add"
         app:layout_constraintBottom_toBottomOf="@+id/txt_sendDestinatario"
         app:layout_constraintEnd_toEndOf="@+id/headerChat"
+        app:layout_constraintStart_toEndOf="@+id/txt_sendDestinatario"
         app:layout_constraintTop_toTopOf="@+id/txt_sendDestinatario" />
 
     <EditText
@@ -69,11 +77,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
+        android:background="@drawable/style_border"
+        android:backgroundTint="#F7F7F7"
+        android:drawableRight="@android:drawable/ic_menu_search"
+        android:drawableTint="@color/color3"
         android:ems="10"
         android:hint="Name:"
         android:inputType="textPersonName"
-        android:textColor="@color/Backgorund_login"
-        android:textColorHint="@color/Backgorund_login"
+        android:padding="4dp"
+        android:textColor="@color/cardview_dark_background"
+        android:textColorHint="@color/cardview_dark_background"
         app:layout_constraintBottom_toBottomOf="@+id/headerChat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
