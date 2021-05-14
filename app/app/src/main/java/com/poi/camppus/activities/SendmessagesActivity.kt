@@ -14,6 +14,7 @@ import com.poi.camppus.R
 import com.poi.camppus.models.ReferenciasFirebase
 import com.poi.camppus.models.tbl_Chat
 import com.poi.camppus.models.tbl_Mensajes
+import com.poi.camppus.models.tbl_Usuarios
 import java.util.*
 
 class SendmessagesActivity : AppCompatActivity() {
@@ -75,7 +76,13 @@ class SendmessagesActivity : AppCompatActivity() {
         firebase.collection(ReferenciasFirebase.CHATS.toString()).document(chatId.toString()).set(chat)
         if (grupo !=null){
             for (item:String in grupo){
-                firebase.collection(ReferenciasFirebase.USERS.toString()).document(item).collection(ReferenciasFirebase.CHATS.toString()).document(chatId.toString()).set(chat)
+                var userRef = firebase.collection(ReferenciasFirebase.USERS.toString()).document(item)
+                userRef.collection(ReferenciasFirebase.CHATS.toString()).document(chatId.toString()).set(chat)
+                if (item != auth.currentUser.email){
+                    val tblUsuarios:tbl_Usuarios = tbl_Usuarios("","","",item,"","","Desconectado")
+                    userRef.set(tblUsuarios)
+                }
+
             }
         }
         destinatario.setText("")

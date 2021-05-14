@@ -1,5 +1,6 @@
 package com.poi.camppus.activities
 
+import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -10,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.poi.camppus.R
 import com.poi.camppus.models.ReferenciasFirebase
+import com.poi.camppus.models.tbl_Usuarios
 import com.poi.camppus.models.tbl_groups
 import java.util.*
 
@@ -37,6 +39,9 @@ class AddGroupActivity : AppCompatActivity() {
         btn_publicEquipo.setOnClickListener(){
            if (usuarios.size > 4){
                insertEquipo()
+               Toast.makeText(this, "Congratulations, you created your team", Toast.LENGTH_SHORT).show()
+               finish()
+
            }
             else{
                ShowAlert("Error", "At least 5 users are required to create a group")
@@ -66,7 +71,12 @@ class AddGroupActivity : AppCompatActivity() {
 
             if (usuarios !=null){
                 for (item:String in usuarios){
-                    firebase.collection(ReferenciasFirebase.USERS.toString()).document(item).collection(ReferenciasFirebase.TEAMS.toString()).document(GrupoId.toString()).set(grupo)
+                    var userRef =firebase.collection(ReferenciasFirebase.USERS.toString()).document(item)
+                        userRef.collection(ReferenciasFirebase.TEAMS.toString()).document(GrupoId.toString()).set(grupo)
+                    if (item != auth.currentUser.email){
+                        val tblUsuarios: tbl_Usuarios = tbl_Usuarios("","","",item,"","","Desconectado")
+                        userRef.set(tblUsuarios)
+                    }
                 }
             }
 

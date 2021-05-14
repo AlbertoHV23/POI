@@ -10,7 +10,7 @@
 
 
     <string name="title_chat">Chat</string>
-    <string name="title_calls">Calls</string>
+    <string name="title_users">Users</string>
     <string name="title_groups">Groups</string>
     <string name="title_assigments">Assigments</string>
     <string name="title_profile">Profile</string>

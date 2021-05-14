@@ -40,6 +40,9 @@ class AddSubGroupActivity : AppCompatActivity() {
 
         btn_publicEquipo.setOnClickListener(){
             insertEquipo()
+            Toast.makeText(this, "Congratulations, you created your SubGroup", Toast.LENGTH_SHORT).show()
+            finish()
+
 
         }
 

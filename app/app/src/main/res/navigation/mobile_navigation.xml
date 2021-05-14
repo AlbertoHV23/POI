@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/navigation_calls"
         android:name="com.poi.camppus.ui.calls.CallsFragment"
-        android:label="@string/title_calls"
+        android:label="@string/title_users"
         tools:layout="@layout/fragment_calls" />
 
     <fragment

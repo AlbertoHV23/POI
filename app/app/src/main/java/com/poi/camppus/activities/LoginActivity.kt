@@ -15,7 +15,9 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 import com.poi.camppus.R
+import com.poi.camppus.models.ReferenciasFirebase
 import com.poi.camppus.models.tbl_Usuarios
 
 
@@ -29,6 +31,8 @@ class   LoginActivity : AppCompatActivity() {
     lateinit var txt_email: EditText
     lateinit var txt_password : EditText
     private val db = FirebaseDatabase.getInstance()
+    val firebase  = FirebaseFirestore.getInstance();
+
 
     lateinit var email:String
     lateinit var pasword:String
@@ -89,6 +93,8 @@ class   LoginActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         showHome()
+                        firebase.collection(ReferenciasFirebase.USERS.toString()).document(email).update("estado","Disponible")
+
                     }
                     else ShowAlert("Error", "Usuario o contraseña incorrecta")
                 }

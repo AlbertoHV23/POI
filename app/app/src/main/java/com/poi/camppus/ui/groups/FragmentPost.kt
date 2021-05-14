@@ -23,6 +23,8 @@ import com.poi.camppus.models.tbl_Mensajes
 import com.poi.camppus.models.tbl_posts
 import io.grpc.Server
 import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class FragmentPost(id:String) : Fragment() {
@@ -75,9 +77,13 @@ class FragmentPost(id:String) : Fragment() {
 
 
         btn_postear.setOnClickListener(){
+            val localDateTime = LocalDateTime.now()
+            val formatter = DateTimeFormatter.ofPattern("dd/MM/yy - HH:mm:ss")
+            val formatted = localDateTime.format(formatter)
 
-                var POST:tbl_posts = tbl_posts(UUID.randomUUID().toString(),txt_post.text.toString(),auth.currentUser.email, LocalDateTime.now().toString(),id_grupo)
-                postear(POST)
+                var POST:tbl_posts = tbl_posts(UUID.randomUUID().toString(),txt_post.text.toString(),auth.currentUser.email, formatted,id_grupo)
+               postear(POST)
+                txt_post.setText("")
 
 
         }
@@ -98,3 +104,4 @@ class FragmentPost(id:String) : Fragment() {
     }
 
 }
+

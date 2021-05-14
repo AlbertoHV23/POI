@@ -56,7 +56,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/style_border"
         android:backgroundTint="#E8E6FF"
@@ -65,7 +65,7 @@
         android:inputType="textPersonName"
         android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_enviarmensajemain"
+        app:layout_constraintEnd_toStartOf="@+id/btn_sendUbication"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -86,12 +86,25 @@
         android:id="@+id/btn_enviarmensajemain"
         android:layout_width="61dp"
         android:layout_height="32dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/style_border"
         android:backgroundTint="#7B6CEA"
         android:drawableEnd="@drawable/ic_send_foreground"
         android:drawableTint="#FFFFFF"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_sendUbication"
+        android:layout_width="50dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/style_border"
+        android:backgroundTint="@color/Titulo"
+        android:drawableEnd="@drawable/ic_baseline_fmd_good_24"
+        android:drawableTint="@color/Backgorund_login"
+        app:layout_constraintEnd_toStartOf="@+id/btn_enviarmensajemain"
+        app:layout_constraintTop_toTopOf="@+id/btn_enviarmensajemain" />
 </androidx.constraintlayout.widget.ConstraintLayout>

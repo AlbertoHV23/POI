@@ -23,7 +23,7 @@ import com.squareup.picasso.Picasso
 
 
 class PorfileFragment : Fragment() {
-    private lateinit var auth: FirebaseAuth
+    private  var auth: FirebaseAuth = FirebaseAuth.getInstance()
     val firebase  = FirebaseFirestore.getInstance();
 
 
@@ -55,7 +55,6 @@ class PorfileFragment : Fragment() {
 
 
 
-        auth = FirebaseAuth.getInstance()
         val userRef = firebase.collection(ReferenciasFirebase.USERS.toString()).document(auth.currentUser.email)
         userRef.get()
             .addOnSuccessListener{
@@ -84,6 +83,7 @@ class PorfileFragment : Fragment() {
 
 
 
+        var useremail = auth.currentUser.email
 
 
 
@@ -92,6 +92,9 @@ class PorfileFragment : Fragment() {
         btn_logOut.setOnClickListener(){
             FirebaseAuth.getInstance().signOut()
             googleSignInClient.signOut();
+            println(useremail)
+
+            firebase.collection(ReferenciasFirebase.USERS.toString()).document(useremail).update("estado","Desconectado")
             val intent = Intent(getActivity(), LoginActivity::class.java)
             startActivity(intent)
 
