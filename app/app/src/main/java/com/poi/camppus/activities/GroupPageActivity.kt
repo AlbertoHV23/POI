@@ -36,7 +36,7 @@ class GroupPageActivity : AppCompatActivity() {
                     tab.text = "Posts"
                 }
                 1 ->{
-                    tab.text = "Files"
+                    tab.text = "Subgroups"
                 }
                 2 ->{
                     tab.text = "Assigments"

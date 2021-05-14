@@ -26,7 +26,7 @@ class ViewPagerAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle,IdG
             }
 
             1 ->{
-                FragmentFiles()
+                FragmentFiles(id)
             }
 
             2 ->{

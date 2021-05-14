@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.AddSubGroupActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/headerChat"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:cardBackgroundColor="@color/color3"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.cardview.widget.CardView>
+
+    <EditText
+        android:id="@+id/txt_subGroupName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/style_border"
+        android:backgroundTint="#F7F7F7"
+        android:drawableLeft="@drawable/ic_baseline_groups_24"
+        android:drawableTint="@color/color3"
+        android:ems="10"
+        android:hint="SubGroup Name:"
+        android:inputType="textPersonName"
+        android:padding="4dp"
+        android:textAlignment="center"
+        android:textColor="@color/cardview_dark_background"
+
+        android:textColorHint="@color/cardview_dark_background"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/headerChat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/headerChat" />
+
+    <Button
+        android:id="@+id/btn_createSubGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/style_border"
+        android:text="Create Group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerChat" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
