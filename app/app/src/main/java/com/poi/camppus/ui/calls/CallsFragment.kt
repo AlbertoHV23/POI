@@ -1,6 +1,7 @@
 package com.poi.camppus.ui.calls
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.poi.camppus.CreateAssigmentActivity
 import com.poi.camppus.R
+import com.poi.camppus.activities.SendmessagesActivity
 import com.poi.camppus.adapters.ListaChatAdapter
 import com.poi.camppus.adapters.ListaUsuariosAdapter
 import com.poi.camppus.models.ReferenciasFirebase
@@ -48,6 +51,20 @@ class CallsFragment : Fragment() {
                 this.adapter = ListaUsuariosAdapter(this.context2!!, MisMensajes)
                 rvChat.adapter = this.adapter
             }
+
+        userRef.addSnapshotListener(){
+                messages,error ->
+            if (error == null){
+                messages?.let {  MisMensajes= it.toObjects(tbl_Usuarios::class.java)
+                    this.adapter = ListaUsuariosAdapter(this.context2!!, MisMensajes)
+                    rvChat.adapter = this.adapter
+                }
+            }
+        }
+
+
+
+
 
 
 

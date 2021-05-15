@@ -59,6 +59,7 @@ class AddSubGroupActivity : AppCompatActivity() {
             val nombreEquipo = txt_nombreEquipo.text.toString()
             var grupo: tbl_subgroups? = null
 
+
         val userRef = firebase.collection(ReferenciasFirebase.TEAMS.toString()).document(id_grupo)
 
         userRef.get().addOnSuccessListener{
@@ -69,11 +70,12 @@ class AddSubGroupActivity : AppCompatActivity() {
                     users = users as List<String>
             )
 
+
             firebase.collection(ReferenciasFirebase.TEAMS.toString()).document(id_grupo).collection(ReferenciasFirebase.SUBGROUPS.toString()).document(grupo!!.id).set(grupo!!)
 
 
-            if (usuarios !=null){
-                for (item:String in usuarios){
+            if (users !=null){
+                for (item:String in users){
                     firebase.collection(ReferenciasFirebase.USERS.toString()).document(item).collection(ReferenciasFirebase.SUBGROUPS.toString()).document(GrupoId.toString()).set(grupo!!)
                 }
             }

@@ -17,6 +17,7 @@ import com.poi.camppus.adapters.PostAdapter
 import com.poi.camppus.models.ReferenciasFirebase
 import com.poi.camppus.models.tbl_posts
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class SubGroupPageActivity : AppCompatActivity() {
@@ -66,7 +67,10 @@ class SubGroupPageActivity : AppCompatActivity() {
 
         txt_name.text = NOMBRE
         btn_enviar.setOnClickListener(){
-            var POST:tbl_posts = tbl_posts(UUID.randomUUID().toString(), txt_mensaje.text.toString(), auth.currentUser.email, LocalDateTime.now().toString(), uid.toString())
+            val localDateTime = LocalDateTime.now()
+            val formatter = DateTimeFormatter.ofPattern("dd/MM/yy - HH:mm:ss")
+            val formatted = localDateTime.format(formatter)
+            var POST:tbl_posts = tbl_posts(UUID.randomUUID().toString(), txt_mensaje.text.toString(), auth.currentUser.email, formatted, uid.toString())
             postear(POST)
 
             txt_mensaje.setText("")

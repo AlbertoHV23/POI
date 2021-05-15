@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.poi.camppus">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -13,8 +13,10 @@
         android:roundIcon="@drawable/logo150"
         android:supportsRtl="true"
         android:theme="@style/Theme.Camppus">
-        <activity android:name=".SubGroupPageActivity"></activity>
-        <activity android:name=".activities.GroupPageActivity"></activity>
+        <activity android:name=".AssigmentActivity"></activity>
+        <activity android:name=".CreateAssigmentActivity" />
+        <activity android:name=".SubGroupPageActivity" />
+        <activity android:name=".activities.GroupPageActivity" />
         <activity android:name=".activities.AddGroupActivity" />
         <activity android:name=".activities.AddSubGroupActivity" />
         <activity android:name=".activities.MensajesActivity" />

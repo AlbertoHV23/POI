@@ -10,5 +10,8 @@
         android:id="@+id/rv_losta_usuarios"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_lista_usuarios" />
+        tools:listitem="@layout/item_lista_usuarios">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,7 +30,7 @@ class ViewPagerAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle,IdG
             }
 
             2 ->{
-                FragmentsGroupAssigments()
+                FragmentsGroupAssigments(id)
             }
 
             else -> {
