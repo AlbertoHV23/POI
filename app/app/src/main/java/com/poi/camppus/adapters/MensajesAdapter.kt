@@ -10,7 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.poi.camppus.R
+import com.poi.camppus.models.Encriptacion
+import com.poi.camppus.models.LLAVES
 import com.poi.camppus.models.tbl_Mensajes
+import java.security.Key
 
 class MensajesAdapter(val context: Context, var LISTA:List<tbl_Mensajes>): RecyclerView.Adapter<MensajesAdapter.Holder>(){
     val firebase  = FirebaseFirestore.getInstance();
@@ -23,6 +26,13 @@ class MensajesAdapter(val context: Context, var LISTA:List<tbl_Mensajes>): Recyc
 
             val mio:TextView = view.findViewById(R.id.myMessageTextView)
             val other:TextView = view.findViewById(R.id.othersMessageTextView)
+            println(mensajes.message)
+            
+            if(mensajes.encriptado == true){
+                var descifarMensaje = Encriptacion.descifar(mensajes.message,LLAVES.MESSAGE.toString())
+                println(descifarMensaje)
+                mensajes.message = descifarMensaje
+            }
 
             if(mensajes.from.equals(auth.currentUser.email)){
                 myMessageLayout.visibility = View.VISIBLE

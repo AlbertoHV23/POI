@@ -74,7 +74,7 @@ class AddGroupActivity : AppCompatActivity() {
                     var userRef =firebase.collection(ReferenciasFirebase.USERS.toString()).document(item)
                         userRef.collection(ReferenciasFirebase.TEAMS.toString()).document(GrupoId.toString()).set(grupo)
                     if (item != auth.currentUser.email){
-                        val tblUsuarios: tbl_Usuarios = tbl_Usuarios("","","",item,"","","Desconectado")
+                        val tblUsuarios: tbl_Usuarios = tbl_Usuarios("","","",item,"","https://firebasestorage.googleapis.com/v0/b/camppus-224af.appspot.com/o/logoDeafult.jpg?alt=media&token=2c018c0d-340b-4853-8fb6-7fe71f2287d7","Desconectado")
                         userRef.set(tblUsuarios)
                     }
                 }

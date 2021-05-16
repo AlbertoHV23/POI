@@ -35,7 +35,6 @@ class ListaUsuariosAdapter(val context: Context, var LISTA:List<tbl_Usuarios>): 
             var img: ImageView = view?.findViewById(R.id.imageView6)
 
 
-            Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/camppus-224af.appspot.com/o/logoDeafult.jpg?alt=media&token=2c018c0d-340b-4853-8fb6-7fe71f2287d7").into(img)
 
 
 
@@ -43,6 +42,22 @@ class ListaUsuariosAdapter(val context: Context, var LISTA:List<tbl_Usuarios>): 
 
                 txt_name.text = superHero.emails
                 txt_estado.text = superHero.estado
+                if (superHero.image != ""){
+
+                    Picasso.get()
+                            .load(superHero.image)
+                            .resize(300, 300)
+                            .centerCrop()
+                            .into(img)
+
+                }
+                else{
+                    Picasso.get()
+                            .load("https://firebasestorage.googleapis.com/v0/b/camppus-224af.appspot.com/o/logoDeafult.jpg?alt=media&token=2c018c0d-340b-4853-8fb6-7fe71f2287d7")
+                            .resize(300, 300)
+                            .centerCrop()
+                            .into(img)
+                }
 
 
 

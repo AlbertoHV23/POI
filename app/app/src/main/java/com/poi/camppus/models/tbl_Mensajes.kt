@@ -6,7 +6,8 @@ import java.util.*
 data class tbl_Mensajes (
         var message: String = "",
         var from: String = "",
-        var dob: Date = Date()
+        var dob: Date = Date(),
+        var encriptado: Boolean? = false
 )
 
 

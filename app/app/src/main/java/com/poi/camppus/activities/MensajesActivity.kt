@@ -21,7 +21,9 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.poi.camppus.R
 import com.poi.camppus.adapters.MensajesAdapter
+import com.poi.camppus.models.Encriptacion
 import com.poi.camppus.models.ReferenciasFirebase
+import com.poi.camppus.models.LLAVES
 import com.poi.camppus.models.tbl_Mensajes
 import com.squareup.picasso.Picasso
 import java.util.*
@@ -36,6 +38,8 @@ class MensajesActivity : AppCompatActivity() {
     private lateinit var _Mensaje:EditText
     private lateinit var _id:String
 
+    private var ENCRIPTADO = false
+
 
     // Location
     private var PERMISSION_ID = 52
@@ -47,8 +51,9 @@ class MensajesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_chat)
         setTheme(R.style.Theme_Camppus_login)
+        setContentView(R.layout.activity_chat)
+
 
         // Location
         // Initiate the fused...providerClient
@@ -67,6 +72,12 @@ class MensajesActivity : AppCompatActivity() {
 
         username.text = ChatName
 
+        val toggle:Switch = findViewById(R.id.switch1)
+        toggle.setOnCheckedChangeListener { _, isChecked ->
+            ENCRIPTADO = isChecked
+            println(ENCRIPTADO)
+        }
+
         _Mensaje = findViewById(R.id.txt_mensaje_main)
         if (uid != null) {
             _id = uid
@@ -84,7 +95,15 @@ class MensajesActivity : AppCompatActivity() {
 
         btn_send.setOnClickListener(){
 
-            enviarMensaje()
+            if(ENCRIPTADO){
+                enviarMensajeEncriptado()
+
+            }
+            else{
+                enviarMensaje()
+            }
+
+
             _Mensaje.setText("")
 
         }
@@ -126,7 +145,9 @@ class MensajesActivity : AppCompatActivity() {
 
         val chat = tbl_Mensajes(
                 message = mensaje,
-                from = auth.currentUser.email
+                from = auth.currentUser.email,
+                encriptado = false
+
 
 
         )
@@ -134,6 +155,26 @@ class MensajesActivity : AppCompatActivity() {
         firebase.collection(ReferenciasFirebase.CHATS.toString()).document(_id).collection(ReferenciasFirebase.MESSAGES.toString()).document().set(chat)
         txt_mensaje_main.setText("")
     }
+
+    private fun enviarMensajeEncriptado() {
+        val mensaje = _Mensaje.text.toString()
+        val txt_mensaje_main:EditText = findViewById(R.id.txt_mensaje_main)
+
+        var mensajeEncriptado = Encriptacion.cifar(mensaje,LLAVES.MESSAGE.toString())
+
+        val chat = tbl_Mensajes(
+                message = mensajeEncriptado,
+                from = auth.currentUser.email,
+                encriptado = true
+
+
+
+        )
+
+        firebase.collection(ReferenciasFirebase.CHATS.toString()).document(_id).collection(ReferenciasFirebase.MESSAGES.toString()).document().set(chat)
+        txt_mensaje_main.setText("")
+    }
+
 
 
     // Function that will allow us to get the last location
@@ -155,8 +196,8 @@ class MensajesActivity : AppCompatActivity() {
 
                         // location.latitude will return the latitude coordinates
                         // location.longitude will return the longitude coordinates
-                        _Mensaje.setText("Current Coordinates are :\nLat:" + location.latitude + " ;Long:"+ location.longitude+
-                                "\nCity: " )
+                        _Mensaje.setText("Hi, this is mi ubication:\nLat:" + location.latitude + " ;Long:"+ location.longitude+
+                                "\nCity: " + getCityName(location.latitude,location.longitude) + ", Country: " + getCountryName(location.latitude,location.longitude) )
                     }
 
                 }
@@ -186,10 +227,30 @@ class MensajesActivity : AppCompatActivity() {
         override fun onLocationResult(p0: LocationResult) {
             var lastLocation : Location = p0.lastLocation
             // Set the new Location
-            _Mensaje.setText("Your Current Coordinates are :\nLat:" + lastLocation.latitude + " ;Long:"+ lastLocation.longitude+
-                    "\nCity: " )
+            // Set the new Location
+            _Mensaje.setText("Hi, this is mi ubication: :\nLat:" + lastLocation.latitude + " ;Long:"+ lastLocation.longitude+
+                    "\nCity: " + getCityName(lastLocation.latitude,lastLocation.longitude) + ", Country: " + getCountryName(lastLocation.latitude,lastLocation.longitude))
 
         }
+    }
+
+    // Function to get city name
+    private fun getCityName(lat:Double,long:Double):String{
+        var CityName = ""
+        var geocoder = Geocoder(this, Locale.getDefault())
+        var Adress: MutableList<Address>? = geocoder.getFromLocation(lat,long,1)
+
+        CityName = Adress?.get(0)?.locality.toString()
+        return CityName
+    }
+    // Function to get country name
+    private fun getCountryName(lat:Double,long:Double):String{
+        var CountryName = ""
+        var geocoder = Geocoder(this, Locale.getDefault())
+        var Adress: MutableList<Address>? = geocoder.getFromLocation(lat,long,1)
+
+        CountryName = Adress?.get(0)?.countryName.toString()
+        return CountryName
     }
 
 
@@ -197,7 +258,7 @@ class MensajesActivity : AppCompatActivity() {
     // Function that will check the uses permission
     private fun CheckPermission():Boolean{
         if(
-                ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED  ||
+                ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
                 ActivityCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
         ){
             return true
