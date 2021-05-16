@@ -10,7 +10,10 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         app:cardCornerRadius="10dp"
-        app:cardElevation="10dp">
+        app:cardElevation="10dp"
+        android:background="@drawable/style_border"
+        android:backgroundTint="#F7F7F7"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -22,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="25dp"
                 android:text="0/100"
-                android:textColor="@color/black"
+                android:textColor="@android:color/tertiary_text_light"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
@@ -36,7 +39,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="10dp"
                 android:text="TextView"
-                android:textColor="@color/Titulo"
+                android:textColor="@color/color3"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -7,7 +7,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <TextView
             android:id="@+id/txt_item_lista_usuario_nombre"
@@ -15,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="TextView"
-            android:textColor="@color/Titulo"
+            android:textColor="@color/color3"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/cardView6"
