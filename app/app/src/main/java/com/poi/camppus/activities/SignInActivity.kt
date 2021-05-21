@@ -25,9 +25,8 @@ class SignInActivity : AppCompatActivity() {
     lateinit var txt_password :EditText
     lateinit var btn_registrar :Button
 
-    private lateinit var auth: FirebaseAuth
-    private val db = FirebaseDatabase.getInstance() //INTANCIA DE LA BASE DE DATOS
-    val firebase  = FirebaseFirestore.getInstance();
+    private lateinit var auth: FirebaseAuth //autenticacion
+    val firebase  = FirebaseFirestore.getInstance(); //firebase
 
     lateinit var names:String
     lateinit var surnames:String

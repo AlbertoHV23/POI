@@ -37,7 +37,7 @@ class AddGroupActivity : AppCompatActivity() {
         txt_nombreUsuario = findViewById(R.id.txt_userGroup)
 
         btn_publicEquipo.setOnClickListener(){
-           if (usuarios.size > 4){
+           if (usuarios.size > 5){
                insertEquipo()
                Toast.makeText(this, "Congratulations, you created your team", Toast.LENGTH_SHORT).show()
                finish()

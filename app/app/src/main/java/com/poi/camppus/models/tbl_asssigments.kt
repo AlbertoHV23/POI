@@ -7,6 +7,7 @@ data class tbl_asssigments(
     var valor:String = "",
     var puntos:String = "0",
     var users: List<String> = emptyList(),
-    var team:String = ""
+    var team:String = "",
+    var trabajo:String = ""
 
 )

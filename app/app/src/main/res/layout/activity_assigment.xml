@@ -127,6 +127,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/style_border"
         android:backgroundTint="#E8E6FF"
         android:ems="10"
@@ -135,7 +136,7 @@
         android:text="Name"
         android:textColor="@android:color/tertiary_text_light"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/view_tittle3"
+        app:layout_constraintEnd_toStartOf="@+id/btn_addFile"
         app:layout_constraintStart_toStartOf="@+id/view_tittle3"
         app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
@@ -150,5 +151,15 @@
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+
+    <Button
+        android:id="@+id/btn_addFile"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/ic_baseline_attach_file_24"
+        app:iconGravity="end"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPersonName2"
+        app:layout_constraintEnd_toEndOf="@+id/view_tittle3"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextPersonName2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
